@@ -41,8 +41,6 @@ void testVector() {
     print(v);
 }
 
-
-
 void print(vector<int>& printMe) {
     for (int i = 0; i < printMe.size(); i++) {
         cout << printMe.at(i) << " ";

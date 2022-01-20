@@ -11,8 +11,6 @@ namespace cs_pairs {
     template <class T>
     class OrderedPair {
     public:
-        // Use the first of the following two lines to make the non-templated version work.
-        // Switch to the second one when you begin converting to a templated version.
         typedef T value_type;
         static const value_type DEFAULT_VALUE;
 
@@ -34,9 +32,6 @@ namespace cs_pairs {
         bool preconditionMet(value_type newFirst, value_type newSecond);
     };
 
-    // Leave the following const declaration commented out when you are testing the non-templated
-    // version. Uncomment it when you begin converting to a templated version.  
-    // The templated version will require a template prefix as well as some minor edits to the code.
     template<class T>
     typename const OrderedPair<T>::value_type OrderedPair<T>::DEFAULT_VALUE = OrderedPair<T>::value_type();
 
