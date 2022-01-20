@@ -1,0 +1,14 @@
+student   : Jose Alfredo Martinez
+instructor: Dave Harden
+class     : CS 10C   
+file name : 
+date      : Jan 20, 2022
+
+what the program does and how the code works:
+
+expected user input:
+
+program output:
+
+   
+

@@ -1,3 +1,12 @@
+/*student: Jose Alfredo Martinez
+instructor : Dave Harden
+class : CS 10C
+    file name : HighScore.cpp 
+date: Jan 20, 2022
+
+what the program does and how the code works :
+Implement functions declared in HighScore.h
+*/
 #include "HighScore.h"
 /// <summary>
 /// enter any size number
@@ -6,9 +15,13 @@
 void getVectorSize(int& size) {
     cout << " How many scores will you enter?: ";
     cin >> size;
-
     cin.ignore();
 }
+
+
+
+
+
 
 /// <summary>
 /// input a size greater than zero
@@ -22,6 +35,11 @@ void getValidVectorSize(int& size) {
         getVectorSize(size);
     }
 }
+
+
+
+
+
 
 /// <summary>
 /// read name and score into array of HighScore 
@@ -39,6 +57,11 @@ void readData(vector<Highscore>& highScores) {
     cout << endl;
 }
 
+
+
+
+
+
 /// <summary>
 /// sort  array of HighScore from largest to smallest score
 /// </summary>
@@ -51,6 +74,11 @@ void sortData(vector<Highscore>& scores) {
 
     }
 }
+
+
+
+
+
 
 /// <summary>
 /// find the largest score entry from startingLocation to endingLocation
@@ -72,6 +100,10 @@ vector<Highscore>::iterator findLocationOfLargest(const vector<Highscore>::itera
 }
 
 
+
+
+
+
 /// <summary>
 /// display name of score of all HighScores in input vector
 /// </summary>
@@ -82,4 +114,3 @@ void displayData(const vector<Highscore>& scores) {
         cout << iterator->name << ": " << iterator->score << endl;
     }
 }
-

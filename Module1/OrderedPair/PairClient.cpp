@@ -1,3 +1,20 @@
+/*student: Jose Alfredo Martinez
+instructor : Dave Harden
+class : CS 10C
+    file name : pairClient.cpp
+date: Jan 20, 2022
+
+what the program does and how the code works :
+    Test if pairClient is able to handle multiple type creation and if exceptions is thrown when expected.
+
+expected user input :
+    enter two number used to initialize and order pair
+
+program output :
+    A MAX_LIST_SIZE list of OrderedPair<int> are printed.
+    An exception is logged if the 2 numbers entered are equal and not zero.
+    The output for a created OrderdPair<string> is displayed
+*/
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -7,6 +24,11 @@ using namespace std;
 using namespace cs_pairs;
 
 const int MAX_LIST_SIZE = 10;
+
+
+
+
+
 
 int main() {
    
@@ -74,4 +96,5 @@ int main() {
     cout << "The resulting string OrderedPair: ";
     myStringPair.print();
     cout << endl;
+    return 0;
 }
