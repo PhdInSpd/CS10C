@@ -15,19 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="a1_1.cpp">
+    <ClCompile Include="OrderedPair.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HighScore.cpp">
+    <ClCompile Include="PairClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HighScore.h">
+    <ClInclude Include="OrderedPair.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="output.txt" />
+    <Text Include="exception.txt" />
+    <Text Include="no-exception.txt" />
   </ItemGroup>
 </Project>

@@ -19,11 +19,11 @@ void print(vector<int>& v);
 void testVector();
 void testTemplateFunction();
 
-//int main() {
-//    testTemplateFunction();
-//    testVector();
-//    return 0;
-//}
+int main() {
+    testTemplateFunction();
+    testVector();
+    return 0;
+}
 
 void testVector() {
 

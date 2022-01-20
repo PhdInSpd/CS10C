@@ -1,0 +1,25 @@
+Atlease one score is required.
+ How many scores will you enter?: 7
+Enter the name for score #1: aaaaaa
+Enter the score for score #1: 111111
+Enter the name for score #2: bbbbbb
+Enter the score for score #2: 222222
+Enter the name for score #3: cccccc
+Enter the score for score #3: 11
+Enter the name for score #4: dddddd
+Enter the score for score #4: 222
+Enter the name for score #5: eeeeeee
+Enter the score for score #5: 44
+Enter the name for score #6: fffffff
+Enter the score for score #6: 55
+Enter the name for score #7: gggggggg
+Enter the score for score #7: 5
+
+Top Scorers:
+bbbbbb: 222222
+aaaaaa: 111111
+dddddd: 222
+fffffff: 55
+eeeeeee: 44
+cccccc: 11
+gggggggg: 5

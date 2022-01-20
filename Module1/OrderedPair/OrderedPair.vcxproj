@@ -18,21 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="a1_1.cpp" />
-    <ClCompile Include="HighScore.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="HighScore.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="output.txt" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bd426758-da0b-45c3-9a56-5cb0bc0d2d47}</ProjectGuid>
-    <RootNamespace>HighScore</RootNamespace>
+    <ProjectGuid>{1e78cd02-7cb7-4758-9bb5-2a0e4f6be8ef}</ProjectGuid>
+    <RootNamespace>OrderedPair</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -148,6 +138,19 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="OrderedPair.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="PairClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OrderedPair.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="exception.txt" />
+    <Text Include="no-exception.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

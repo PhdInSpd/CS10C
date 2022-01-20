@@ -1,0 +1,15 @@
+default value: (0, 0)
+(42, 52)
+(2, 58)
+(44, 110)
+(33, 99)
+(14, 76)
+(4, 62)
+(2, 99)
+(29, 65)
+(43, 91)
+(49, 68)
+Enter two numbers to use in an OrderedPair.  Make sure they are different numbers: 5 5
+Error, you attempted to set both members of the OrderedPair to the same number.
+The resulting int OrderedPair: (0, 0)
+The resulting string OrderedPair: (e, F)
