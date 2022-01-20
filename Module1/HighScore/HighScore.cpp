@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
 const int MAX_NAME_SIZE = 24;
@@ -9,27 +11,25 @@ struct Highscore {
     int score;
 };
 
-void getArraySize(int& size);
-void readData(Highscore highScores[], int size);
-void sortData(Highscore highScores[], int size);
-int findIndexOfLargest(const Highscore highScores[], int startingIndex, int size);
-void displayData(const Highscore highScores[], int size);
+void getVectorSize(int& size);
+void readData(vector<Highscore>& scores);
+void sortData(vector<Highscore>& scores);
+vector<Highscore>::iterator findLocationOfLargest(
+    const vector<Highscore>::iterator startingLocation,
+    const vector<Highscore>::iterator endingLocation);
+void displayData(const vector<Highscore>& scores);
 
-int main()
-{
-
-    Highscore* highScores;
+int main() {
+    vector<Highscore> highScores;
     int size;
 
     getArraySize(size);
 
-    highScores = new Highscore[size];
 
-    readData(highScores, size);
-    sortData(highScores, size);
-    displayData(highScores, size);
-
-    delete[] highScores;
+    readData(highScores);
+    sortData(highScores);
+    displayData(highScores);
+    
 }
 
 void getArraySize(int& size) {
@@ -68,7 +68,9 @@ void sortData(Highscore highScores[], int numItems) {
 
 
 
-int findIndexOfLargest(const Highscore highScores[], int startingIndex, int numItems) {
+vector<Highscore>::iterator findLocationOfLargest(
+    const vector<Highscore>::iterator startingLocation,
+    const vector<Highscore>::iterator endingLocation) {
     int indexOfLargest = startingIndex;
 
     for (int count = startingIndex + 1; count < numItems; count++) {
