@@ -1,4 +1,5 @@
-/*student: Jose Alfredo Martinez
+/*
+student: Jose Alfredo Martinez
 instructor : Dave Harden
 class : CS 10C
     file name : pairClient.cpp
@@ -11,6 +12,7 @@ expected user input :
     enter two number used to initialize and order pair
 
 program output :
+    the default value after constructor call of OrderedPair<int>
     A MAX_LIST_SIZE list of OrderedPair<int> are printed.
     An exception is logged if the 2 numbers entered are equal and not zero.
     The output for a created OrderdPair<string> is displayed
@@ -63,13 +65,7 @@ int main() {
     cin >> num1 >> num2;
     OrderedPair<int> x;
 
-    /* use this before you've implemented the exception handling in the class:
-    */
-
-   /* x.setFirst(num1);
-    x.setSecond(num2);*/
-
-    // use this after you've implemented the exception handling in the class:
+    // exception handling for similar non default value
     try {
         x.setFirst(num1);
         x.setSecond(num2);
@@ -80,7 +76,6 @@ int main() {
         x.setFirst(OrderedPair<int>::DEFAULT_VALUE);
         x.setSecond(OrderedPair<int>::DEFAULT_VALUE);
     }
-    
 
     cout << "The resulting int OrderedPair: ";
     x.print();

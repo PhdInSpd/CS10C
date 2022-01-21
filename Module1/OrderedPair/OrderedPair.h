@@ -1,4 +1,5 @@
-/*student: Jose Alfredo Martinez
+/*
+student: Jose Alfredo Martinez
 instructor : Dave Harden
 class : CS 10C
     file name : OderdPair.h
@@ -8,14 +9,14 @@ OrderedPair is a STL container class that stores a first and second entry.
 
 precondition for setFirst and setSecond: the values of first and second cannot be equal,
 except when they are both equal to DEFAULT_VALUE.
-
 */
 #pragma once
 #include <iostream>
 #include <exception>
 using namespace std;
-/* 
-*/
+
+
+
 
 
 namespace cs_pairs {

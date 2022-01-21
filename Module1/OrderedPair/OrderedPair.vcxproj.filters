@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="exception.txt" />
-    <Text Include="no-exception.txt" />
+    <Text Include="pairClient-exception.txt" />
+    <Text Include="pairClient-no-exception.txt" />
   </ItemGroup>
 </Project>
