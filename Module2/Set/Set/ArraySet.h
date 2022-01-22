@@ -1,0 +1,63 @@
+/*
+    student: Jose Alfredo Martinez
+    instructor : Dave Harden
+    class : CS 10C
+    date : Jan 21, 2022
+*/
+/** Header file for an array-based implementation of the ADT set. Listing 3-1.
+ @file ArraySet.h */
+
+#pragma once
+#include <exception>
+#include "SetInterface.h"
+
+namespace cs_set {
+    template<class ItemType>
+    class ArraySet : public SetInterface<ItemType>
+    {
+    public:
+        class CapacityExceededError {};
+        class ItemNotFoundError {};
+        class DuplicateItemError : public std::exception {};
+
+        typedef ItemType value_type;
+
+        ArraySet();
+        int getCurrentSize() const;
+        bool isEmpty() const;
+        void add(const ItemType& newEntry);
+        void add(const ArraySet& otherSet);
+        void add(const std::vector<ItemType>& itemList);
+        void remove(const ItemType& anEntry);
+        void clear();
+        bool contains(const ItemType& anEntry) const;
+
+        /** Perform the union of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the union between this set and otherSet. */
+        ArraySet setUnion(const ArraySet & otherSet);
+        /** Perform the intersection of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the intersection between this set and otherSet. */
+        ArraySet setIntersection(const ArraySet& otherSet);
+        /** Perform the difference of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the difference between this set and otherSet. */
+        ArraySet setDifference(const ArraySet& otherSet);
+
+        //int getFrequencyOf(const ItemType& anEntry) const;
+        std::vector<ItemType> toVector() const;
+    private:
+        static const int DEFAULT_CAPACITY = 6;
+        ItemType items[DEFAULT_CAPACITY];
+        int itemCount;
+        int maxItems;
+
+        // Returns either the index of the element in the array items that
+        // contains the given target or -1, if the array does not contain 
+        // the target.
+        int getIndexOf(const ItemType& target) const;
+    };
+}
+
+#include "ArraySet.cpp"

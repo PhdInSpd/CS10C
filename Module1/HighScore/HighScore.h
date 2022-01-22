@@ -1,4 +1,5 @@
-/*student: Jose Alfredo Martinez
+/*
+student: Jose Alfredo Martinez
 instructor : Dave Harden
 class : CS 10C
     file name : HighScore.h
