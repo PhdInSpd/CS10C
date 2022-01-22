@@ -1,0 +1,58 @@
+Testing the Array-Based Set:
+The initial set is empty.
+isEmpty: returns 1; should be 1 (true)
+The set contains 0 items:
+
+
+Add 6 unique items to the set :
+The set contains 6 items:
+one two three four five six
+
+isEmpty: returns 0; should be 0 (false)
+getCurrentSize: returns 6; should be 6
+Try to add another entry: add("extra")... should cause exception and did!
+remove("one")... shouldn't cause exception and didn't!
+Try to add a copy entry: add("six")... should cause exception and did!
+contains("three"): returns 1; should be 1 (true)
+contains("ten"): returns 0; should be 0 (false)
+remove("one")... should cause exception and did!
+
+The set contains 5 items:
+six two three four five
+
+After clearing the set, isEmpty: returns 1; should be 1 (true)
+testSetUnion
+setA The set contains 3 items:
+one two three
+
+setB The set contains 3 items:
+four five six
+
+setC The set contains 4 items:
+seven eight nine ten
+
+unionAB The set contains 6 items:
+one two three four five six
+
+unionBC capacityExceededError
+testSetIntersection
+setA The set contains 6 items:
+one two three four five six
+
+setB The set contains 3 items:
+four five six
+
+intAB The set contains 3 items:
+four five six
+
+testSetDifference
+setA The set contains 6 items:
+one two three four five six
+
+setB The set contains 3 items:
+four five six
+
+differenceAB The set contains 3 items:
+one two three
+
+All done!
