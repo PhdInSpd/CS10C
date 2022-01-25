@@ -7,13 +7,17 @@
 using namespace std;
 using namespace cs_set;
 
-void displaySet(LinkedSet<string>& set) {
+void displaySet( LinkedSet<string>& set, const std::string& setName = "") {
+    if (!setName.empty()) {
+        cout << setName << " ";
+    }
     vector<string> setItems = set.toVector();
 
     int numberOfEntries = setItems.size();
     for (int i = 0; i < numberOfEntries; i++) {
         cout << setItems[i] << " ";
     }
+    cout << endl;
 }
 
 
@@ -21,8 +25,7 @@ void displaySet(LinkedSet<string>& set) {
 
 
 
-void copyConstructorTester()
-{
+void copyConstructorTester() {
     cout << "Testing copy constructor:" << endl;
     LinkedSet<string> set;
     string items[] = { "zero", "one", "two", "three", "four", "five" };
@@ -50,6 +53,33 @@ void copyConstructorTester()
     cout << "Copy of set: ";
     displaySet(copyOfSet);
     cout << endl;
+}
+
+
+
+
+
+
+void assignmentTester() {
+    cout << "Testing assignment:" << endl;
+    LinkedSet<string> set;
+    string items[] = { "zero", "one", "two", "three", "four", "five", "six", "seven"};
+    for (int i = 0; i < 8; i++) {
+        cout << "Adding " << items[i] << endl;
+        set.add(items[i]);
+    }
+
+    cout << "The original set: ";
+    displaySet(set);
+    cout << endl;
+
+    LinkedSet<string> setAss;
+    setAss.add("ten");
+    setAss = set;
+    cout << "assignment of set: ";
+    displaySet(setAss);
+    cout << endl;
+
 }
 
 
@@ -133,7 +163,79 @@ void setTester() {
 
 
 
+
+void testSetUnion() {
+    cout << "testSetUnion" << endl;
+    LinkedSet<string> setA;
+    LinkedSet<string> setB;
+    LinkedSet<string> setC;
+
+    setA.add({ "one", "two", "three" });
+    setB.add({ "four", "five", "six" });
+    setC.add({ "seven", "eight", "nine", "ten" });
+
+    displaySet(setA, "setA");
+    displaySet(setB, "setB");
+    displaySet(setC, "setC");
+
+    LinkedSet<string> unionAB = setA.setUnion(setB);
+    displaySet(unionAB, "unionAB");
+
+    LinkedSet<string> unionBC = setB.setUnion(setC);
+    displaySet(unionBC, "unionBC");
+}
+
+
+
+
+
+
+void testSetIntersection() {
+    cout << "testSetIntersection" << endl;
+    LinkedSet<string> setA;
+    LinkedSet<string> setB;
+
+    setA.add({ "one", "two", "three","four", "five", "six" });
+    setB.add({ "four", "five", "six" });
+
+    displaySet(setA, "setA");
+    displaySet(setB, "setB");
+
+    LinkedSet<string> intAB = setA.setIntersection(setB);
+    displaySet(intAB, "intAB");
+}
+
+
+
+
+
+
+void testSetDifference() {
+    cout << "testSetDifference" << endl;
+    LinkedSet<string> setA;
+    LinkedSet<string> setB;
+
+    setA.add({ "one", "two", "three","four", "five", "six" });
+    setB.add({ "four", "five", "six" });
+
+    displaySet(setA, "setA");
+    displaySet(setB, "setB");
+
+    LinkedSet<string> diffAB = setA.setDifference(setB);
+    displaySet(diffAB, "differenceAB");
+}
+
+
+
+
+
+
 int main() {
+    testSetUnion();
+    testSetIntersection();
+    testSetDifference();
+
+    assignmentTester();
     copyConstructorTester();
     setTester();
 }

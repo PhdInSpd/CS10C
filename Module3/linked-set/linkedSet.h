@@ -31,11 +31,28 @@ namespace cs_set {
         int getCurrentSize() const;
         bool isEmpty() const;
         void add(const ItemType& newEntry);
+        void add(const LinkedSet<ItemType>& otherSet);
+        void add(const std::vector<ItemType>& itemList);
+
         void remove(const ItemType& anEntry);
         void clear();
         bool contains(const ItemType& anEntry) const;
         //int getFrequencyOf(const ItemType& anEntry) const;
         std::vector<ItemType> toVector() const;
+
+        /** Perform the union of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the union between this set and otherSet. */
+        LinkedSet setUnion(const LinkedSet& otherSet);
+        /** Perform the intersection of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the intersection between this set and otherSet. */
+        LinkedSet setIntersection(const LinkedSet& otherSet);
+        /** Perform the difference of this set and otherSet.
+        @param otherSet  The other set.
+        @return  the difference between this set and otherSet. */
+        LinkedSet setDifference(const LinkedSet& otherSet);
+
     private:
         void clone(const LinkedSet<ItemType>& copyMe);
     };

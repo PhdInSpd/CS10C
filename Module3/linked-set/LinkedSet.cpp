@@ -29,6 +29,7 @@ namespace cs_set {
     // the copy constructor
     template <class ItemType>
     LinkedSet<ItemType>& LinkedSet<ItemType>::operator=(const LinkedSet<ItemType>& copyMe) {
+        clear();
         clone(copyMe);
         return *this;
     }
@@ -41,35 +42,6 @@ namespace cs_set {
     // clone a LinkedSet
     template <class ItemType>
     void LinkedSet<ItemType>::clone(const LinkedSet<ItemType>& copyMe) {
-        /*clear();
-        itemCount = copyMe.itemCount;
-        Node<ItemType>* origChainPtr = copyMe.headPtr;
-
-        if (origChainPtr == nullptr) {
-            headPtr = nullptr;
-            return;
-        }
-        if (copyMe.headPtr == nullptr) {
-            this->headPtr = nullptr;
-            return;
-        }
-
-        Node* sourcePtr = &copyMe;
-        Node* newListPtr = new Node();
-        newListPtr->setItem( sourcePtr->getItem() );
-        newListPtr->setNext( nullptr  );
-        this->headPtr = newListPtr;
-
-        sourcePtr = sourcePtr->getNext();
-
-        while (sourcePtr != nullptr) {
-            newListPtr->setNext( new Node() );
-            newListPtr = newListPtr->getNext();
-            newListPtr->setItem( sourcePtr->getItem() );
-            newListPtr->setNext( nullptr );
-            sourcePtr = sourcePtr->getNext();
-        }*/
-        clear();
         itemCount = copyMe.itemCount;
         Node<ItemType>* origChainPtr = copyMe.headPtr;
 
@@ -157,6 +129,35 @@ namespace cs_set {
 
 
 
+
+    template<class ItemType>
+    void LinkedSet<ItemType>::add(const LinkedSet<ItemType>& otherSet) {
+        if (otherSet.isEmpty()) return;
+        Node<ItemType>* curPtr = otherSet.headPtr;
+
+        do {
+            add(curPtr->getItem());
+            curPtr = curPtr->getNext();
+        } while (curPtr != nullptr);
+    }
+
+
+
+
+
+
+    template<class T>
+    void LinkedSet<T>::add(const std::vector<T>& itemList) {
+        for ( auto it = itemList.begin(); it < itemList.end(); it++) {
+            add(*it);
+        }
+    }
+
+
+
+
+
+
     template<class ItemType>
     std::vector<ItemType> LinkedSet<ItemType>::toVector() const {
         std::vector<ItemType> setContents;
@@ -213,26 +214,6 @@ namespace cs_set {
 
 
 
-    /*template<class ItemType>
-    int LinkedSet<ItemType>::getFrequencyOf(const ItemType& anEntry) const {
-        int frequency = 0;
-        int counter = 0;
-        Node<ItemType>* curPtr = headPtr;
-        while ((curPtr != nullptr) && (counter < itemCount)) {
-            if (anEntry == curPtr->getItem()) {
-                frequency++;
-            }
-
-            counter++;
-            curPtr = curPtr->getNext();
-        }
-
-        return frequency;
-    }*/
-
-
-
-
 
     template<class ItemType>
     bool LinkedSet<ItemType>::contains(const ItemType& anEntry) const {
@@ -263,5 +244,69 @@ namespace cs_set {
 
         return curPtr;
     }
+
+
+
+
+
+    template<class ItemType>
+    LinkedSet<ItemType> LinkedSet<ItemType>::setUnion(const LinkedSet& otherSet) {
+        LinkedSet<ItemType> union1;
+        union1.add(*this);
+        union1.add(otherSet);
+        return union1;
+    }
+
+
+
+
+
+
+    template<class ItemType>
+    LinkedSet<ItemType> LinkedSet<ItemType>::setIntersection(const LinkedSet& otherSet) {
+        LinkedSet<ItemType> intersection;
+
+        Node<ItemType>* curPtr = otherSet.headPtr;
+        do {
+
+            if ( this->contains( curPtr->getItem() ) ) {
+                intersection.add( curPtr->getItem() );
+            }
+            curPtr = curPtr->getNext();
+        } while (curPtr != nullptr);
+        return intersection;
+    }
+
+
+
+
+
+
+    template<class ItemType>
+    LinkedSet<ItemType> LinkedSet<ItemType>::setDifference(const LinkedSet& otherSet) {
+        //LinkedSet<ItemType> intersection = setIntersection(otherSet);
+        LinkedSet<ItemType> intersection;
+        Node<ItemType>* curPtr = otherSet.headPtr;
+        do {
+
+            if (this->contains(curPtr->getItem())) {
+                intersection.add(curPtr->getItem());
+            }
+            curPtr = curPtr->getNext();
+        } while (curPtr != nullptr);
+
+        
+        LinkedSet<ItemType> difference;
+        difference.add(*this);
+
+        curPtr = intersection.headPtr;
+        do {
+            difference.remove( curPtr->getItem() );
+            curPtr = curPtr->getNext();
+        } while (curPtr != nullptr);
+
+        return difference;
+    }
+
 }
 

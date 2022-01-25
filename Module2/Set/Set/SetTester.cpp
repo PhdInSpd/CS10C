@@ -127,7 +127,7 @@ void testSetUnion() {
 
     try {
         ArraySet<string> unionBC = setB.setUnion(setC);
-        displaySet(unionAB, "unionBC");
+        displaySet(unionBC, "unionBC");
     }
     catch (ArraySet<string>::CapacityExceededError e) {
         cout << "unionBC capacityExceededError" << endl;
