@@ -1,5 +1,19 @@
 //Â  Created by Frank M. Carrano and Timothy M. Henry.
 //Â  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
+/*
+student   : Jose Alfredo Martinez
+instructor: Dave Harden
+class     : CS 10C
+date      : Jan 25, 2022
+file name : setTester.cpp
+
+the client test the SetInterface.h implementation
+
+expected user input: None
+
+program output: results from testing union, intersection , difference,
+    class assignment, copy contructor, and general set functionaly test.
+*/
 
 #include <iostream>
 #include <string>
@@ -28,11 +42,7 @@ void displaySet( LinkedSet<string>& set, const std::string& setName = "") {
 void copyConstructorTester() {
     cout << "Testing copy constructor:" << endl;
     LinkedSet<string> set;
-    string items[] = { "zero", "one", "two", "three", "four", "five" };
-    for (int i = 0; i < 6; i++) {
-        cout << "Adding " << items[i] << endl;
-        set.add(items[i]);
-    }
+    set.add({ "zero", "one", "two", "three", "four", "five" });
 
     cout << "The original set: ";
     displaySet(set);
@@ -63,11 +73,7 @@ void copyConstructorTester() {
 void assignmentTester() {
     cout << "Testing assignment:" << endl;
     LinkedSet<string> set;
-    string items[] = { "zero", "one", "two", "three", "four", "five", "six", "seven"};
-    for (int i = 0; i < 8; i++) {
-        cout << "Adding " << items[i] << endl;
-        set.add(items[i]);
-    }
+    set.add({ "zero", "one", "two", "three", "four", "five", "six", "seven" });
 
     cout << "The original set: ";
     displaySet(set);
@@ -95,9 +101,9 @@ void setTester() {
     displaySet(set);
     cout << endl;
 
-    string items[] = { "one", "two", "three", "four", "five", "one" };
-    cout << "Add 6 items to the set: " << endl;
-    for (int i = 0; i < 6; i++) {
+    std::vector<string> items = { "one", "two", "three", "four", "five", "one" };
+    cout << "Add " << items.size() << " items to the set : " << endl;
+    for (int i = 0; i < items.size(); i++) {
         try {
             set.add(items[i]);
         }
@@ -122,8 +128,6 @@ void setTester() {
         << "; should be 1 (true)" << endl;
     cout << "contains(\"ten\"): returns " << set.contains("ten")
         << "; should be 0 (false)" << endl;
-    /*cout << "getFrequencyOf(\"one\"): returns "
-        << set.getFrequencyOf("one") << " should be 2" << endl;*/
 
 
     try {
@@ -134,9 +138,6 @@ void setTester() {
     catch (LinkedSet<string>::ItemNotFoundError e) {
         cout << "shouldn't cause exception but did." << endl;
     }
-
-    /*cout << "getFrequencyOf(\"one\"): returns "
-        << set.getFrequencyOf("one") << " should be 1" << endl;*/
 
 
     try {

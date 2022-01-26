@@ -2,7 +2,7 @@
     student: Jose Alfredo Martinez
     instructor : Dave Harden
     class : CS 10C
-    date : Jan 21, 2022
+    date : Jan 25, 2022
     @file SetInterface.h */
 #pragma once
 

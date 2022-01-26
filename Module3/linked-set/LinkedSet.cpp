@@ -1,7 +1,15 @@
 //Â  Created by Frank M. Carrano and Timothy M. Henry.
 //Â  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 //  Edited by Dave Harden
+/*
+student   : Jose Alfredo Martinez
+instructor: Dave Harden
+class     : CS 10C
+date      : Jan 25, 2022
+file name : LinkedSet.cpp
 
+LinkedSet class implementation
+*/
 #include "Node.h"
 #include <cstddef>
 

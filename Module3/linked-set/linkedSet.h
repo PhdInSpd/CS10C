@@ -1,6 +1,16 @@
 #pragma once
 //Â  Created by Frank M. Carrano and Timothy M. Henry.
 //Â  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
+/*
+student    : Jose Alfredo Martinez
+instructor : Dave Harden
+class      : CS 10C
+date       : Jan 25, 2022
+file name  : linkeSet.h
+
+SetInterface header file for class implementation.
+
+*/
 
 #pragma once
 #include "SetInterface.h"
@@ -37,7 +47,6 @@ namespace cs_set {
         void remove(const ItemType& anEntry);
         void clear();
         bool contains(const ItemType& anEntry) const;
-        //int getFrequencyOf(const ItemType& anEntry) const;
         std::vector<ItemType> toVector() const;
 
         /** Perform the union of this set and otherSet.

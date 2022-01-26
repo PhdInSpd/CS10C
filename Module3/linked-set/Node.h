@@ -1,8 +1,12 @@
 //Â  Created by Frank M. Carrano and Timothy M. Henry.
 //Â  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
-
-/** @file Node.h
-    Listing 4-1 */
+/*
+    student: Jose Alfredo Martinez
+    instructor : Dave Harden
+    class : CS 10C
+    date : Jan 25, 2022
+    @file Node.h
+*/
 #pragma once
 
 namespace cs_set {
