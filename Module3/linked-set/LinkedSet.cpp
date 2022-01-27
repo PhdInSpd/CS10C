@@ -154,9 +154,9 @@ namespace cs_set {
 
 
 
-    template<class T>
-    void LinkedSet<T>::add(const std::vector<T>& itemList) {
-        for ( auto it = itemList.begin(); it < itemList.end(); it++) {
+    template<class ItemType>
+    void LinkedSet<ItemType>::add(const std::vector<ItemType>& itemList) {
+        for (typename std::vector<ItemType>::const_iterator it = itemList.begin(); it < itemList.end(); it++) {
             add(*it);
         }
     }

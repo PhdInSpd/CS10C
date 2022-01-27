@@ -37,17 +37,17 @@ namespace cs_set {
         LinkedSet();
         LinkedSet( const LinkedSet<ItemType>& copyMe );
         LinkedSet& operator=(const LinkedSet<ItemType>& copyMe);
-        virtual ~LinkedSet();
-        int getCurrentSize() const;
-        bool isEmpty() const;
-        void add(const ItemType& newEntry);
+        virtual ~LinkedSet() override;
+        int getCurrentSize() const override;
+        bool isEmpty() const override;
+        void add(const ItemType& newEntry) override;
+        void remove(const ItemType& anEntry) override; 
+        void clear() override;
+        bool contains(const ItemType& anEntry) const override;
+        std::vector<ItemType> toVector() const override;
+
         void add(const LinkedSet<ItemType>& otherSet);
         void add(const std::vector<ItemType>& itemList);
-
-        void remove(const ItemType& anEntry);
-        void clear();
-        bool contains(const ItemType& anEntry) const;
-        std::vector<ItemType> toVector() const;
 
         /** Perform the union of this set and otherSet.
         @param otherSet  The other set.
