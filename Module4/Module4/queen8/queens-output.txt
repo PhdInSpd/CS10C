@@ -1,0 +1,13 @@
+configuration 0
+X _ _ _ _ _ _ _
+_ _ _ _ _ _ X _
+_ _ _ _ X _ _ _
+_ _ _ _ _ _ _ X
+_ X _ _ _ _ _ _
+_ _ _ X _ _ _ _
+_ _ _ _ _ X _ _
+_ _ X _ _ _ _ _
+
+C:\Users\PhdInSpd\source\repos\PhdInSpd\CS10C\Module4\Module4\Debug\queen8.exe (process 8544) exited with code 0.
+To automatically close the console when debugging stops, enable Tools->Options->Debugging->Automatically close the console when debugging stops.
+Press any key to close this window . . .
