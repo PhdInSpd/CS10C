@@ -35,10 +35,11 @@ namespace cs_set {
 
 
 
-    template<class T>
-    void ArraySet<T>::add(const std::vector<T>& itemList) {
+    template<class ItemType>
+    void ArraySet<ItemType>::add(const std::vector<ItemType>& itemList) {
         // std::vector<T>::const_iterator give compiler error C2760
-        for ( /*std::vector<T>::const_iterator*/auto it = itemList.begin(); it < itemList.end(); it++ ) {
+        // typename std::vector<ItemType>::const_iterator it fixes error
+        for (typename std::vector<ItemType>::const_iterator it/*auto it*/ = itemList.begin(); it != itemList.end(); it++ ) {
             add(*it);
         }
     }
@@ -78,7 +79,7 @@ namespace cs_set {
     template<class ItemType>
     std::vector<ItemType> ArraySet<ItemType>::toVector() const {
         std::vector<ItemType> setContents;
-        for (int i = 0; i < itemCount; i++) {
+        for (size_t i = 0; i < itemCount; i++) {
             setContents.push_back(items[i]);
         }
 
@@ -90,7 +91,7 @@ namespace cs_set {
 
     template <class ItemType>
     bool ArraySet<ItemType>::contains(const ItemType& anEntry) const {
-        for (int i = 0; i < itemCount; i++) {
+        for (size_t i = 0; i < itemCount; i++) {
             if (items[i] == anEntry) {
                 return true;
             }
@@ -113,7 +114,7 @@ namespace cs_set {
 
     template<class ItemType>
     int ArraySet<ItemType>::getIndexOf(const ItemType& target) const {
-        for (int i = 0; i < itemCount; i++) {
+        for (rsize_t i = 0; i < itemCount; i++) {
             if (items[i] == target) {
                 return i;
             }

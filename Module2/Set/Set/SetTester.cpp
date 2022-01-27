@@ -40,7 +40,7 @@ void setTester(ArraySet<string>& set) {
 
     std::vector<std::string> items = { "one", "two", "three", "four", "five", "six" };
     cout << "Add "<< items.size() << " unique items to the set : " << endl;
-    for (int i = 0; i < items.size(); i++) {
+    for (size_t i = 0; i < items.size(); i++) {
         set.add(items[i]);
     }
 

@@ -12,7 +12,7 @@
 #include "SetInterface.h"
 
 namespace cs_set {
-    template<class ItemType>
+    template<typename ItemType>
     class ArraySet : public SetInterface<ItemType>
     {
     public:
@@ -23,15 +23,20 @@ namespace cs_set {
         typedef ItemType value_type;
 
         ArraySet();
-        int getCurrentSize() const;
-        bool isEmpty() const;
-        void add(const ItemType& newEntry);
+        int getCurrentSize() const override;
+        bool isEmpty() const override;
+        void add(const ItemType& newEntry) override;
+        void remove(const ItemType& anEntry) override;
+        void clear() override;
+        bool contains(const ItemType& anEntry) const override;
+
+        //int getFrequencyOf(const ItemType& anEntry) const;
+        std::vector<ItemType> toVector() const override;
+
         void add(const ArraySet& otherSet);
         void add(const std::vector<ItemType>& itemList);
-        void remove(const ItemType& anEntry);
-        void clear();
-        bool contains(const ItemType& anEntry) const;
 
+        // is there a reason this are not declared in interface file? */
         /** Perform the union of this set and otherSet.
         @param otherSet  The other set.
         @return  the union between this set and otherSet. */
@@ -45,13 +50,12 @@ namespace cs_set {
         @return  the difference between this set and otherSet. */
         ArraySet setDifference(const ArraySet& otherSet);
 
-        //int getFrequencyOf(const ItemType& anEntry) const;
-        std::vector<ItemType> toVector() const;
+        
     private:
         static const int DEFAULT_CAPACITY = 6;
         ItemType items[DEFAULT_CAPACITY];
-        int itemCount;
-        int maxItems;
+        unsigned int itemCount;
+        unsigned int maxItems;
 
         // Returns either the index of the element in the array items that
         // contains the given target or -1, if the array does not contain 
