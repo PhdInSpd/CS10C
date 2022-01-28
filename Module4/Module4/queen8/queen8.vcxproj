@@ -142,8 +142,8 @@
     <ClCompile Include="queens.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="output-8configurations.txt" />
-    <Text Include="queens-output.txt" />
+    <Text Include="output-8configurations1.txt" />
+    <Text Include="output-8configurations2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

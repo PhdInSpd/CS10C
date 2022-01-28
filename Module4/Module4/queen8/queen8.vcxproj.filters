@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="queens-output.txt" />
-    <Text Include="output-8configurations.txt" />
+    <Text Include="output-8configurations2.txt" />
+    <Text Include="output-8configurations1.txt" />
   </ItemGroup>
 </Project>
