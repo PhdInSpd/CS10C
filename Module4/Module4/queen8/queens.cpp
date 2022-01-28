@@ -65,6 +65,10 @@ public:
     int getRow() const;
     void setCol(int inCol);
     int getCol() const;
+    /// <summary>
+    /// if alive then queen can attack
+    /// </summary>
+    /// <returns></returns>
     bool getAlive() const;
     void setAlive(bool alive);
     /*
