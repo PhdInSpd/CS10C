@@ -18,7 +18,7 @@ public:
     static const int BOARD_SIZE = 8;
     Board();
     void doQueens();
-    void display() /*const*/;
+    void display() const;
     /// <summary>
     /// is the nowRow, testCol inside the board
     /// </summary>
@@ -46,8 +46,7 @@ private:
     /// <param name="testRow"></param>
     /// <param name="testCol"></param>
     /// <returns></returns>
-    bool doesQueenExist(int testRow, int testCol);
-
+    bool doesQueenExist(int testRow, int testCol) const;
     vector<Queen> queens;
 };
 
@@ -57,6 +56,8 @@ public:
     int getRow() const;
     void setCol(int inCol);
     int getCol() const;
+    bool getAlive() const;
+    void setAlive(bool alive);
     /*
     * is the queen attacking nowtRow,testCol position given it's current positon
     * post: @return true if nowtRow,testCol is under attack.
@@ -82,6 +83,7 @@ private:
     
     int row;
     int col;
+    bool alive;
 };
 
 bool Queen::isAttacking( int testRow, int testCol ) {
@@ -168,6 +170,15 @@ void Queen::setCol(int inCol) {
     col = inCol;
 }
 
+
+bool Queen::getAlive() const {
+    return alive;
+}
+
+void Queen::setAlive(bool isAlive) {
+    alive = isAlive;
+}
+
 bool Board::isInside( int testRow, int testCol ) {
     if (testRow < 0) {
         //std::cout << "nowtRow is negative" << endl;
@@ -190,7 +201,7 @@ bool Board::isInside( int testRow, int testCol ) {
 }
 
 Board::Board() {
-    //queens.resize(BOARD_SIZE);
+    queens.resize(BOARD_SIZE);
 }
 
 void Board::doQueens() {
@@ -219,20 +230,20 @@ bool Board::placeQueens(int row, int col) {
     bool safePlace = findNextSafeSquare( row, col );
     while ( safePlace ) {
         //Set the location of the Queen to row,col
-        Queen queen;
-        queen.setRow(row);
-        queen.setCol(col);
-        queens.push_back(queen);
-        if ( queens.size()==BOARD_SIZE    // last queen placed
-            || placeQueens( 0, col + 1    // place in new col, row 0
+        queens[col].setAlive(true);
+        queens[col].setRow(row);
+        queens[col].setCol(col);
+        if ( col == (BOARD_SIZE-1)          // last queen placed
+            || placeQueens( 0, col + 1      // place in new col, row 0
             ) ) {    
             return true;
         }
         else {
             // remove last entry
-            queens.pop_back();
+            queens[col].setAlive(false);
+
             // because current row produce failure I will try next
-            row++;
+            row++;            
         }
         safePlace = findNextSafeSquare(row, col);
     }
@@ -243,6 +254,7 @@ bool Board::placeQueens(int row, int col) {
 
 bool Board::isUnderAttack(int testRow, int testCol) {
     for (size_t i = 0; i < queens.size(); i++) {
+        if (!queens[i].getAlive()) continue;
         if ( queens[i].isAttacking( testRow, testCol ) ) {
             return true;
         }
@@ -250,8 +262,11 @@ bool Board::isUnderAttack(int testRow, int testCol) {
     return false;
 }
 
-bool Board::doesQueenExist( int testRow, int testCol) {
+bool Board::doesQueenExist( int testRow, int testCol) const {
     for (size_t i = 0; i < queens.size(); i++) {
+        if (!queens[i].getAlive()) {
+            continue;
+        }
         if ( queens[i].getRow() == testRow && queens[i].getCol() == testCol ) {
             return true;
         }
@@ -280,10 +295,10 @@ bool Board::findNextSafeSquare(int& row, int col) {
 // Displays a visual representation of the current state of the board.  For each position
 // on the board, displays "X " if a queen is located at that position, otherwise displays
 // "_ " (underscore).
-void Board::display() /*const*/ {
+void Board::display() const {
     for (int _row = 0; _row < BOARD_SIZE; _row++) {
         for (int _col = 0; _col < BOARD_SIZE; _col++) {
-            if (doesQueenExist( _row, _col)) {
+            if ( doesQueenExist( _row, _col) ) {
                 cout << "X ";
             }
             else {
