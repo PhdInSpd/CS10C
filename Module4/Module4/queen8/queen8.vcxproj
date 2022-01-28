@@ -142,6 +142,7 @@
     <ClCompile Include="queens.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="output-8configurations.txt" />
     <Text Include="queens-output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -38,7 +38,16 @@ private:
     /// <param name="col"></param>
     /// <returns></returns>
     bool placeQueens(int row, int col);
-    bool findNextSafeSquare(int& row, int col);
+
+    /// <summary>
+    /// randomly select next row based on previous rows added
+    /// </summary>
+    /// <param name="addedRows"></param>
+    /// <param name="row"></param>
+    /// <param name="col"></param>
+    /// <returns></returns>
+    bool findNextSafeSquare( vector<int> addedRows, int& row, int col);
+
     bool isUnderAttack(int row, int col);
     /// <summary>
     /// Does a queen exist at testRow, testCol
@@ -59,27 +68,27 @@ public:
     bool getAlive() const;
     void setAlive(bool alive);
     /*
-    * is the queen attacking nowtRow,testCol position given it's current positon
-    * post: @return true if nowtRow,testCol is under attack.
+    * is the queen attacking testRow,testCol position given it's current positon
+    * post: @return true if testRow,testCol is under attack.
     */    
     bool isAttacking(int testRow, int testCol );
 private:
     /// <summary>
-    /// traverse the diagnolStrike line until a strike is found or board is out of bound
+    /// generate strikeRow, strikeCol that queen will hit with diagnal mode.
     /// </summary>
     /// <param name="rowDirection"> row increment </param>
     /// <param name="colDirection"> col increment </param>
-    /// <param name="testRow"></param>
-    /// <param name="testCol"></param>
-    /// <param name="striketRow"> row to increment for next diagnol position</param>
-    /// <param name="strikeCol"> col to increment for next diagnol position</param>
+    /// <param name="testRow">row we are testing for attack from queen</param>
+    /// <param name="testCol">col we are testing for attack from queen</param>
+    /// <param name="striketRow"> row to increment for next diagnol strike position</param>
+    /// <param name="strikeCol"> col to increment for next diagnol strike position</param>
     /// <returns></returns>
     bool diagnolStrike( int rowDirection, 
                         int colDirection,
                         int testRow,
                         int testCol,
-                        int & startRow,
-                        int & startCol);
+                        int & strikeRow,
+                        int & strikeCol);
     
     int row;
     int col;
@@ -205,8 +214,7 @@ Board::Board() {
 }
 
 void Board::doQueens() {
-    // cant do all configurations because failed rows need to be store to get next row try
-    /*for (size_t i = 0; i < BOARD_SIZE; i++) {
+    for (size_t i = 0; i < BOARD_SIZE; i++) {
         cout << "configuration " << i << endl;
         if (placeQueens(i, 0)) {
             display();
@@ -214,28 +222,67 @@ void Board::doQueens() {
         else {
             cout << "No solution found." << endl;
         }
-    }*/
-    int i = 0;
-    cout << "configuration " << i << endl;
-    if (placeQueens(i, 0)) {
-        display();
+        cout << endl;
+
+        // remove queens from board
+        for (size_t j = 0; j < queens.size(); j++) {
+            queens[j].setAlive(false);
+        }
     }
-    else {
-        cout << "No solution found." << endl;
-    }
+}
+
+/// <summary>
+/// randomly select a number between 0 and BOARD_SIZE-1
+/// </summary>
+/// <returns></returns>
+int getRandomRow() {
     
+    return std::rand()% Board::BOARD_SIZE;
+}
+
+/// <summary>
+/// does the array rowsAdded contain row
+/// </summary>
+/// <param name="rowsAdded"></param>
+/// <param name="row"></param>
+/// <returns></returns>
+bool vectorContains(const vector<int>& rowsAdded, int row) {
+    for (size_t i = 0; i < rowsAdded.size(); i++) {
+        if (rowsAdded[i] == row) return true;
+    }
+    return false;
+}
+
+/// <summary>
+/// select next row randomly excluding already selected rowsAdded
+/// </summary>
+/// <param name="rowsAdded"></param>
+/// <returns></returns>
+int getNextRow(const vector<int>& rowsAdded) {
+    if (rowsAdded.size() >= Board::BOARD_SIZE) {
+        return Board::BOARD_SIZE;
+    }
+    int randomRow = getRandomRow();
+    if ( vectorContains(rowsAdded, randomRow) ) {
+        return getNextRow( rowsAdded );
+    }
+    return randomRow;
 }
 
 bool Board::placeQueens(int row, int col) {
-    bool safePlace = findNextSafeSquare( row, col );
-    while ( safePlace ) {
+    // store list of tryed rows in the stack for each col iteration
+    vector<int> rowsAdded;
+    bool safePlace = findNextSafeSquare(rowsAdded,row, col);
+    while (safePlace) {
         //Set the location of the Queen to row,col
         queens[col].setAlive(true);
         queens[col].setRow(row);
         queens[col].setCol(col);
-        if ( col == (BOARD_SIZE-1)          // last queen placed
-            || placeQueens( 0, col + 1      // place in new col, row 0
-            ) ) {    
+        rowsAdded.push_back(row);
+
+        if (col == (BOARD_SIZE - 1)          // last queen placed
+            || placeQueens( getRandomRow(), col + 1      // place in new col, row 0
+            )) {
             return true;
         }
         else {
@@ -243,9 +290,11 @@ bool Board::placeQueens(int row, int col) {
             queens[col].setAlive(false);
 
             // because current row produce failure I will try next
-            row++;            
+            //rowsPass.back() = false;
+            row = getNextRow(rowsAdded);
+            //row++;
         }
-        safePlace = findNextSafeSquare(row, col);
+        safePlace = findNextSafeSquare(rowsAdded,row, col);
     }
 
     // exited the while loop, which means that all rows in this column have been considered.
@@ -279,17 +328,20 @@ bool Board::doesQueenExist( int testRow, int testCol) const {
 // be the "next safe square". 
 // returns true if a safe square is found, false if no safe square is found.  If 
 // return value is false, row is undefined.
-bool Board::findNextSafeSquare(int& row, int col) {
-    if ( row >= BOARD_SIZE ) {
+bool Board::findNextSafeSquare( vector<int> addedRows,int& row, int col) {
+    if ( addedRows.size() >= BOARD_SIZE ) {
         return false;
     }
 
     if ( !isUnderAttack( row, col ) ) {
         return true;
     }                  
+    // exclude the row that is under attack
+    addedRows.push_back(row);
 
-    row = row + 1;
-    return findNextSafeSquare( row, col );
+    // row = row + 1;
+    row = getNextRow(addedRows);
+    return findNextSafeSquare( addedRows, row, col );
 }
 
 // Displays a visual representation of the current state of the board.  For each position
@@ -311,6 +363,7 @@ void Board::display() const {
 }
 
 int main() {
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
     Board board;
     board.doQueens();
 }

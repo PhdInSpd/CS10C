@@ -21,5 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="queens-output.txt" />
+    <Text Include="output-8configurations.txt" />
   </ItemGroup>
 </Project>
