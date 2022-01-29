@@ -294,7 +294,6 @@ bool Board::placeQueens(int row, int col) {
             queens[col].setAlive(false);
 
             // because current row produce failure I will try next
-            //rowsPass.back() = false;
             row = getNextRow(rowsAdded);
             //row++;
         }
