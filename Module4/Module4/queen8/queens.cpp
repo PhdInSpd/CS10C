@@ -42,11 +42,11 @@ private:
     /// <summary>
     /// randomly select next row based on previous rows added
     /// </summary>
-    /// <param name="addedRows"></param>
-    /// <param name="row"></param>
-    /// <param name="col"></param>
+    /// <param name="addedRows">array of rows that have been selected already</param>
+    /// <param name="row">reference value: the next row that is safe</param>
+    /// <param name="col">reference value: </param>
     /// <returns></returns>
-    bool findNextSafeSquare( vector<int> addedRows, int& row, int col);
+    bool findNextSafeSquare( vector<int>& addedRows, int& row, int col);
 
     bool isUnderAttack(int row, int col);
     /// <summary>
@@ -332,7 +332,7 @@ bool Board::doesQueenExist( int testRow, int testCol) const {
 // be the "next safe square". 
 // returns true if a safe square is found, false if no safe square is found.  If 
 // return value is false, row is undefined.
-bool Board::findNextSafeSquare( vector<int> addedRows,int& row, int col) {
+bool Board::findNextSafeSquare( vector<int>& addedRows,int& row, int col) {
     if ( addedRows.size() >= BOARD_SIZE ) {
         return false;
     }

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen8", "queen8\queen8.vcxproj", "{4962D22F-7AE2-488F-90A9-C38280ECDA4C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fibonaci", "fibonaci\fibonaci.vcxproj", "{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{4962D22F-7AE2-488F-90A9-C38280ECDA4C}.Release|x64.Build.0 = Release|x64
 		{4962D22F-7AE2-488F-90A9-C38280ECDA4C}.Release|x86.ActiveCfg = Release|Win32
 		{4962D22F-7AE2-488F-90A9-C38280ECDA4C}.Release|x86.Build.0 = Release|Win32
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Debug|x64.ActiveCfg = Debug|x64
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Debug|x64.Build.0 = Debug|x64
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Debug|x86.ActiveCfg = Debug|Win32
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Debug|x86.Build.0 = Debug|Win32
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Release|x64.ActiveCfg = Release|x64
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Release|x64.Build.0 = Release|x64
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Release|x86.ActiveCfg = Release|Win32
+		{76B15E64-FE8B-4BE3-B8C2-3D85C7E30CA8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
