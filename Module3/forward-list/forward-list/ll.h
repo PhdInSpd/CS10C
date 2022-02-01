@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdio>
 
-template <class T>
+template <typename T>
 class LL {
 public:
     typedef size_t size_type;

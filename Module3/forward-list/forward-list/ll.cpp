@@ -4,12 +4,12 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
+template <typename T>
 LL<T>::LL() {
     list = nullptr;
 }
 
-template <class T>
+template <typename T>
 void LL<T>::delete_after(iterator& position) {
     assert(position.link()->next != nullptr);
     node* tempptr = position.link()->next;
@@ -19,7 +19,7 @@ void LL<T>::delete_after(iterator& position) {
 
 
 
-template <class T>
+template <typename T>
 void LL<T>::insert_after(iterator& position, const value_type& insertMe) {
     node* newnode = new node;
     newnode->data = insertMe;
@@ -30,7 +30,7 @@ void LL<T>::insert_after(iterator& position, const value_type& insertMe) {
 
 
 
-template <class T>
+template <typename T>
 void LL<T>::pop_front() {
     if (empty()) {
         throw Empty_List_Error();
@@ -47,7 +47,7 @@ void LL<T>::pop_front() {
 
 
 
-template <class T>
+template <typename T>
 typename LL<T>::value_type& LL<T>::front() {
     if (empty()) {
         throw Empty_List_Error();
@@ -61,7 +61,7 @@ typename LL<T>::value_type& LL<T>::front() {
 
 
 
-template <class T>
+template <typename T>
 const typename LL<T>::value_type& LL<T>::front()  const {
     if (empty()) {
         throw Empty_List_Error();
@@ -76,7 +76,7 @@ const typename LL<T>::value_type& LL<T>::front()  const {
 
 
 
-template <class T>
+template <typename T>
 void LL<T>::clear() {
     node* deleteMe;
     while (list != nullptr) {
@@ -92,7 +92,7 @@ void LL<T>::clear() {
 
 // Note this is an exact copy of the clone() function from SimpleList
 
-template <class T>
+template <typename T>
 void LL<T>::clone(const LL<T>& copyMe) {
     clear();
     if (copyMe.list == nullptr) {
@@ -135,7 +135,7 @@ void LL<T>::clone(const LL<T>& copyMe) {
 
 
 // returns the number of items in the LL object.
-template <class T>
+template <typename T>
 typename LL<T>::size_type LL<T>::size() const {
     LL<T>::size_type numberOfItems = 0;
     node* curPtr = list;
@@ -151,7 +151,7 @@ typename LL<T>::size_type LL<T>::size() const {
 
 
 // returns true if the LL object is empty, false otherwise.
-template <class T>
+template <typename T>
 bool LL<T>::empty() const {
     return list == nullptr;
 }
@@ -161,7 +161,7 @@ bool LL<T>::empty() const {
 
 
 // insert x at the front of the LL object.
-template <class T>
+template <typename T>
 void LL<T>::push_front(const value_type& item) {
     node* oldList = list;
     list = new node;
@@ -181,7 +181,7 @@ void LL<T>::push_front(const value_type& item) {
 
 // THE BIG-3
 
-template <class T>
+template <typename T>
 LL<T>  LL<T>::operator=(const LL<T>& right) {
     if (this != &right) {
         clear();
@@ -194,7 +194,7 @@ LL<T>  LL<T>::operator=(const LL<T>& right) {
 
 
 
-template <class T>
+template <typename T>
 LL<T>::LL(const LL<T>& copyMe) {
     clone(copyMe);
 }
@@ -204,7 +204,7 @@ LL<T>::LL(const LL<T>& copyMe) {
 
 
 
-template <class T>
+template <typename T>
 LL<T>::~LL() {
     clear();
 }
