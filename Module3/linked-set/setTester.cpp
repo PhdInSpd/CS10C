@@ -242,7 +242,31 @@ int main() {
 }
 
 /*
-* Removing 'one' from copy of set.
+testSetUnion
+setA three two one
+setB six five four
+setC ten nine eight seven
+unionAB four five six one two three
+unionBC seven eight nine ten four five six
+testSetIntersection
+setA six five four three two one
+setB six five four
+intAB four five six
+testSetDifference
+setA six five four three two one
+setB six five four
+differenceAB one two three
+Testing assignment:
+The original set: seven six five four three two one zero
+
+assignment of set: seven six five four three two one zero
+
+Testing copy constructor:
+The original set: five four three two one zero
+
+Copy of set: five four three two one zero
+
+Removing 'one' from copy of set.
 The original set: five four three two one zero
 
 Copy of set: four three two five zero
@@ -266,4 +290,5 @@ remove("one")... should cause exception and did!
 five four three two extra
 
 After clearing the set, isEmpty: returns 1; should be 1 (true)
+
 */
