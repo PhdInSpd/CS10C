@@ -6,7 +6,7 @@
 */
 namespace cs_set {
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArraySet<ItemType>::add(const ItemType& newEntry) {
         if (itemCount >= maxItems) {
             throw CapacityExceededError();
@@ -23,7 +23,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArraySet<ItemType>::add(const ArraySet<ItemType> & otherSet) {
         for (size_t i = 0; i < otherSet.itemCount; i++) {
             add(otherSet.items[i]);
@@ -35,7 +35,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArraySet<ItemType>::add(const std::vector<ItemType>& itemList) {
         // std::vector<T>::const_iterator give compiler error C2760
         // typename std::vector<ItemType>::const_iterator it fixes error
@@ -49,7 +49,7 @@ namespace cs_set {
     
     
     
-    template<class ItemType>
+    template<typename ItemType>
     ArraySet<ItemType>::ArraySet() {
         itemCount = 0;
         maxItems = DEFAULT_CAPACITY;
@@ -59,7 +59,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     int ArraySet<ItemType>::getCurrentSize() const {
         return itemCount;
     }
@@ -68,7 +68,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     bool ArraySet<ItemType>::isEmpty() const {
         return itemCount == 0;
     }
@@ -76,7 +76,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     std::vector<ItemType> ArraySet<ItemType>::toVector() const {
         std::vector<ItemType> setContents;
         for (size_t i = 0; i < itemCount; i++) {
@@ -89,7 +89,7 @@ namespace cs_set {
 
 
 
-    template <class ItemType>
+    template <typename ItemType>
     bool ArraySet<ItemType>::contains(const ItemType& anEntry) const {
         for (size_t i = 0; i < itemCount; i++) {
             if (items[i] == anEntry) {
@@ -103,7 +103,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArraySet<ItemType>::clear() {
         itemCount = 0;
     }
@@ -112,7 +112,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     int ArraySet<ItemType>::getIndexOf(const ItemType& target) const {
         for (rsize_t i = 0; i < itemCount; i++) {
             if (items[i] == target) {
@@ -128,7 +128,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArraySet<ItemType>::remove(const ItemType& anEntry) {
         int locatedIndex = getIndexOf(anEntry);
         if (locatedIndex > -1) {
@@ -145,7 +145,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     ArraySet<ItemType> ArraySet<ItemType>::setUnion(const ArraySet& otherSet) {
         ArraySet<ItemType> union1;
         union1.add(*this);
@@ -158,7 +158,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     ArraySet<ItemType> ArraySet<ItemType>::setIntersection(const ArraySet& otherSet) {
         ArraySet<ItemType> intersection;
         for (size_t i = 0; i < otherSet.itemCount; i++) {
@@ -174,7 +174,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     ArraySet<ItemType> ArraySet<ItemType>::setDifference(const ArraySet& otherSet) {
         ArraySet<ItemType> intersection = setIntersection(otherSet);
         ArraySet<ItemType> difference;
