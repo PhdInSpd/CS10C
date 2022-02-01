@@ -240,3 +240,30 @@ int main() {
     copyConstructorTester();
     setTester();
 }
+
+/*
+* Removing 'one' from copy of set.
+The original set: five four three two one zero
+
+Copy of set: four three two five zero
+
+Testing the Link-Based Set:
+isEmpty: returns 1; should be 1 (true)
+
+
+Add 6 items to the set :
+DuplicateItemError adding item one
+five four three two one
+
+isEmpty: returns 0; should be 0 (false)
+getCurrentSize: returns 5; should be 5
+Add another entry: add("extra")
+contains("three"): returns 1; should be 1 (true)
+contains("ten"): returns 0; should be 0 (false)
+remove("one")... shouldn't cause exception and didn't!
+remove("one")... should cause exception and did!
+
+five four three two extra
+
+After clearing the set, isEmpty: returns 1; should be 1 (true)
+*/
