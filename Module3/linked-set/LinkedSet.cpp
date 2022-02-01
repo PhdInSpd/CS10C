@@ -15,7 +15,7 @@ LinkedSet class implementation
 
 namespace cs_set {
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType>::LinkedSet() {
         headPtr = nullptr;
         itemCount = 0;
@@ -25,7 +25,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType>::LinkedSet(const LinkedSet<ItemType>& copyMe) {
         clone(copyMe);
     }
@@ -35,7 +35,7 @@ namespace cs_set {
 
 
     // the copy constructor
-    template <class ItemType>
+    template <typename ItemType>
     LinkedSet<ItemType>& LinkedSet<ItemType>::operator=(const LinkedSet<ItemType>& copyMe) {
         clear();
         clone(copyMe);
@@ -48,7 +48,7 @@ namespace cs_set {
 
 
     // clone a LinkedSet
-    template <class ItemType>
+    template <typename ItemType>
     void LinkedSet<ItemType>::clone(const LinkedSet<ItemType>& copyMe) {
         itemCount = copyMe.itemCount;
         Node<ItemType>* origChainPtr = copyMe.headPtr;
@@ -93,7 +93,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType>::~LinkedSet() {
         clear();
     }
@@ -102,7 +102,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     bool LinkedSet<ItemType>::isEmpty() const {
         return itemCount == 0;
     }
@@ -111,7 +111,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     int LinkedSet<ItemType>::getCurrentSize() const {
         return itemCount;
     }
@@ -120,7 +120,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void LinkedSet<ItemType>::add(const ItemType& newEntry) {
         if (contains(newEntry)) {
             throw DuplicateItemError();
@@ -138,7 +138,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void LinkedSet<ItemType>::add(const LinkedSet<ItemType>& otherSet) {
         if (otherSet.isEmpty()) return;
         Node<ItemType>* curPtr = otherSet.headPtr;
@@ -166,7 +166,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     std::vector<ItemType> LinkedSet<ItemType>::toVector() const {
         std::vector<ItemType> setContents;
         Node<ItemType>* curPtr = headPtr;
@@ -182,7 +182,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void LinkedSet<ItemType>::remove(const ItemType& anEntry) {
         Node<ItemType>* entryNodePtr = getPointerTo(anEntry);
         if (entryNodePtr == nullptr) {
@@ -205,7 +205,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void LinkedSet<ItemType>::clear() {
         Node<ItemType>* nodeToDeletePtr = headPtr;
         while (headPtr != nullptr) {
@@ -223,7 +223,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     bool LinkedSet<ItemType>::contains(const ItemType& anEntry) const {
         return (getPointerTo(anEntry) != nullptr);
     }
@@ -236,7 +236,7 @@ namespace cs_set {
     // Returns either a pointer to the node containing a given entry 
     // or nullptr if the entry is not in the set.
 
-    template<class ItemType>
+    template<typename ItemType>
     Node<ItemType>* LinkedSet<ItemType>::getPointerTo(const ItemType& anEntry) const {
         bool found = false;
         Node<ItemType>* curPtr = headPtr;
@@ -257,7 +257,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType> LinkedSet<ItemType>::setUnion(const LinkedSet& otherSet) {
         LinkedSet<ItemType> union1;
         union1.add(*this);
@@ -270,7 +270,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType> LinkedSet<ItemType>::setIntersection(const LinkedSet& otherSet) {
         LinkedSet<ItemType> intersection;
 
@@ -290,7 +290,7 @@ namespace cs_set {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     LinkedSet<ItemType> LinkedSet<ItemType>::setDifference(const LinkedSet& otherSet) {
         //LinkedSet<ItemType> intersection = setIntersection(otherSet);
         LinkedSet<ItemType> intersection;

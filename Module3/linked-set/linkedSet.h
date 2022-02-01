@@ -18,7 +18,7 @@ SetInterface header file for class implementation.
 
 namespace cs_set {
 
-    template<class ItemType>
+    template<typename ItemType>
     class LinkedSet : public SetInterface<ItemType>
     {
     private:

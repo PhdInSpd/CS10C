@@ -9,10 +9,10 @@ using namespace std;
 
 const int ARRAY_SIZE = 25;
 
-template <class T>
+template <typename T>
 void sort(T list[], int numItems);
 
-template <class T>
+template <typename T>
 int indexOfSmallest(const T list[], int startingIndex, int numItems);
 
 void print(vector<int>& v);
@@ -92,7 +92,7 @@ void testTemplateFunction() {
 }
 
 
-template <class T>
+template <typename T>
 void sort(T list[], int numItems)
 {
     for (int count = 0; count < numItems - 1; count++) {
@@ -103,7 +103,7 @@ void sort(T list[], int numItems)
 }
 
 
-template <class T>
+template <typename T>
 int indexOfSmallest(const T list[], int startingIndex, int numItems)
 {
     int targetIndex = startingIndex;

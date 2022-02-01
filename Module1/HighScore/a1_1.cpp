@@ -10,7 +10,7 @@ what the program does and how the code works :
     Query number of HighScore entries from user.
 
 expected user input :
-    User will then input the name and score for eac entry.
+    User will then input the name and score for each entry.
 
 program output :
     The data will be sorted by decreasing score and printed.

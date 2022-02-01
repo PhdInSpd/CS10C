@@ -20,7 +20,7 @@ using namespace std;
 
 
 namespace cs_pairs {
-    template <class T>
+    template <typename T>
     class OrderedPair {
     public:
         typedef T value_type;

@@ -1,6 +1,6 @@
 // file myvector.cpp
 
-template <class T>
+template <typename T>
 MyVector<T>::MyVector(size_type inSize, const value_type& inValue) {
     mSize = inSize;
     mCapacity = inSize;
@@ -13,14 +13,14 @@ MyVector<T>::MyVector(size_type inSize, const value_type& inValue) {
 
 
 
-template <class T>
+template <typename T>
 typename MyVector<T>::size_type MyVector<T>::size() const {
     return mSize;
 }
 
 
 
-template <class T>
+template <typename T>
 void MyVector<T>::push_back(const value_type& inValue) {
     if (mSize < mCapacity) {
         items[mSize] = inValue;
@@ -45,7 +45,7 @@ void MyVector<T>::push_back(const value_type& inValue) {
 }
 
 
-template <class T>
+template <typename T>
 typename MyVector<T>::size_type MyVector<T>::capacity() const {
     return mCapacity;
 }
@@ -53,7 +53,7 @@ typename MyVector<T>::size_type MyVector<T>::capacity() const {
 
 
 
-template <class T>
+template <typename T>
 typename MyVector<T>::value_type MyVector<T>::at(size_type i) const {
     assert(i >= 0 && i < size());
     return items[i];

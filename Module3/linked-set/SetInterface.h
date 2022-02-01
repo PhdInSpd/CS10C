@@ -9,7 +9,7 @@
 #include <vector>
 
 namespace cs_set {
-    template<class ItemType>
+    template<typename ItemType>
     class SetInterface
     {
     public:

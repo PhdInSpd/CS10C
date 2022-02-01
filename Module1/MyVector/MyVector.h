@@ -4,7 +4,7 @@
 #include <cassert>
 #include <cstdlib>
 
-template <class T>
+template <typename T>
 class MyVector {
 public:
     typedef std::size_t size_type;
