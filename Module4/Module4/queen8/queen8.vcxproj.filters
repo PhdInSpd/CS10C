@@ -19,8 +19,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="output-8configurations2.txt" />
-    <Text Include="output-8configurations1.txt" />
-  </ItemGroup>
 </Project>
