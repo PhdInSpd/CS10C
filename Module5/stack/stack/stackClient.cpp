@@ -12,18 +12,17 @@ bool isBalanced(const string& mystring);
 int main() {
 	string astring;
 
-	cout << "enter a string of parens: ";
-	cin >> astring;
-	while (astring != "quit") {
+	
+	do {
+		cout << "enter a string of parens: ";
+		cin >> astring;
 		if (isBalanced(astring)) {
 			cout << "balanced" << endl;
 		}
 		else {
 			cout << "not balanced" << endl;
 		}
-		cout << "enter a string of parens: ";
-		cin >> astring;
-	}
+	} while (astring != "quit");
 }
 
 

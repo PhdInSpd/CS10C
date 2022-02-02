@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0420d36f-4575-4c87-83ee-46416f4071a1}</ProjectGuid>
-    <RootNamespace>stack</RootNamespace>
+    <ProjectGuid>{b855cc42-e98f-4942-8f8f-db07e5f3d56e}</ProjectGuid>
+    <RootNamespace>algrebraic</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,16 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arrayStack.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="stackClient.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="arrayStack.h" />
-    <ClInclude Include="mystack-ll.h" />
-    <ClInclude Include="stackInterface.h" />
+    <ClCompile Include="a5_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

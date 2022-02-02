@@ -11,7 +11,7 @@ namespace cs_stack {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     bool ArrayStack<ItemType>::isEmpty() const {
         return numItems == 0;
     }
@@ -21,7 +21,7 @@ namespace cs_stack {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArrayStack<ItemType>::push(const ItemType& newEntry) {
         if (numItems < DEFAULT_CAPACITY) {
             numItems++;
@@ -37,7 +37,7 @@ namespace cs_stack {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     void ArrayStack<ItemType>::pop() {
         if (!isEmpty())
         {
@@ -52,7 +52,7 @@ namespace cs_stack {
 
 
 
-    template<class ItemType>
+    template<typename ItemType>
     ItemType ArrayStack<ItemType>::top() const {
         if (!isEmpty()) {
             return items[numItems - 1];
