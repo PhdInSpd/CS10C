@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stackClient.cpp">
+    <ClCompile Include="a5_3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="arrayStack.cpp">
@@ -27,9 +27,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stackInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mystack-ll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
