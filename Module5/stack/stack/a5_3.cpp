@@ -17,8 +17,6 @@ using namespace cs_stack;
 
 void testStack();
 
-void testStack();
-
 template<typename T>
 void printStack(string message, ArrayStack<T>& printMe);
 
