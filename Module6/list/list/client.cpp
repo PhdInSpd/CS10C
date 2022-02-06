@@ -5,7 +5,7 @@ using namespace std;
 using namespace cs_sequence;
 
 int main() {
-	Sequence<int> s;
+	Sequence s;
 	for (int i = 0; i < 6; i++) {
 		s.insert(i);
 	}

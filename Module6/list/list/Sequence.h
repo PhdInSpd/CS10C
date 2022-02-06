@@ -12,7 +12,7 @@ Declare a list class
 namespace cs_sequence {
 
 	template<typename ItemType>
-	class Sequence {
+	class SequenceTemplate {
 	public:
 		class Node {
 		public:
@@ -61,10 +61,10 @@ namespace cs_sequence {
 		using value_type = ItemType;
 		using size_type = size_t;
 		
-		~Sequence();
+		~SequenceTemplate();
 		// postcondition: Remove all items from the list
 
-		Sequence();
+		SequenceTemplate();
 		// postcondition: The Sequence has been initialized to an empty Sequence.
 
 		void start();
@@ -107,6 +107,13 @@ namespace cs_sequence {
 		value_type current() const;
 		// Precondition: is_item() returns true
 		// Postcondition: The current item in the Sequence is returned.
+	};
+
+	/// <summary>
+	/// An integer version of sequenceTemplate
+	/// </summary>
+	class Sequence : public SequenceTemplate<int> {
+
 	};
 }
 #include "Sequence.cpp"	

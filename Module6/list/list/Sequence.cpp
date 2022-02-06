@@ -10,12 +10,12 @@ sequence.h implementation
 */
 namespace cs_sequence {
     template<typename ItemType>
-    typename Sequence<ItemType>::size_type  Sequence<ItemType>::size() const {
+    typename SequenceTemplate<ItemType>::size_type  SequenceTemplate<ItemType>::size() const {
         return numItems;
     }
 
     template<typename ItemType>
-    Sequence<ItemType>::Sequence() :    numItems(0),
+    SequenceTemplate<ItemType>::SequenceTemplate() :    numItems(0),
                                         headPtr(nullptr),
                                         tailPtr(nullptr),
                                         cursor(nullptr),
@@ -23,7 +23,7 @@ namespace cs_sequence {
     }
 
     template<typename ItemType>
-    Sequence<ItemType>::~Sequence() {
+    SequenceTemplate<ItemType>::~SequenceTemplate() {
         start();
         while (numItems > 0) {
             remove_current();
@@ -31,20 +31,20 @@ namespace cs_sequence {
     }
 
     template<typename ItemType>
-    void Sequence<ItemType>::start() {
+    void SequenceTemplate<ItemType>::start() {
         cursor = headPtr;
         precursor = nullptr;
     }
 
     template<typename ItemType>
-    void Sequence<ItemType>::advance() {
+    void SequenceTemplate<ItemType>::advance() {
         assert(is_item());
         precursor = cursor;
         cursor = cursor->nextPtr;
     }
 
     template<typename ItemType>
-    void Sequence<ItemType>::insert(const value_type& entry) {
+    void SequenceTemplate<ItemType>::insert(const value_type& entry) {
         Node* new_node = new Node;
         new_node->data = entry;
         numItems++;
@@ -69,12 +69,12 @@ namespace cs_sequence {
     }
 
     template<typename ItemType>
-    void Sequence<ItemType>::attach(const value_type& entry) {
+    void SequenceTemplate<ItemType>::attach(const value_type& entry) {
 
     }
 
     template<typename ItemType>
-    void Sequence<ItemType>::remove_current() {
+    void SequenceTemplate<ItemType>::remove_current() {
         assert(is_item());
         if (precursor == nullptr) {
             Node* next = cursor->nextPtr;
@@ -90,12 +90,12 @@ namespace cs_sequence {
     }
 
     template<typename ItemType>
-    bool Sequence<ItemType>::is_item() const{
+    bool SequenceTemplate<ItemType>::is_item() const{
         return cursor != nullptr;
     }
 
     template<typename ItemType>
-    typename Sequence<ItemType>::value_type Sequence<ItemType>::current() const {
+    typename SequenceTemplate<ItemType>::value_type SequenceTemplate<ItemType>::current() const {
         assert(is_item());
         return cursor->data;
     }
