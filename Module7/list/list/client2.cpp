@@ -683,10 +683,8 @@ int run_a_test(int number, const char message[], int test_function(), int max)
 //   The main program calls all tests and prints the sum of all points
 //   earned from the tests.
 // **************************************************************************
-int main()
-{
+int main() {
 	int sum = 0;
-
 
 	cout << "Running " << DESCRIPTION[0] << endl;
 
@@ -702,5 +700,4 @@ int main()
 	cout << " points from this test program.\n";
 
 	return EXIT_SUCCESS;
-
 }
