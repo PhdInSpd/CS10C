@@ -22,6 +22,12 @@ namespace cs_sequence {
 			node* next;
 		};
 	// all the section should be private but the client.cpp requies public to assess.
+	// Question1: How do we protect these items and check them with client asserts? 
+	/******************************************************************************
+	* aftere test make this private
+	* start private section
+	* *****************************************************************************/
+	//private:
 	public:
 		/// <summary>
 		///  The head and tail pointers of the linked list. If the Sequence has no items, 
@@ -55,7 +61,9 @@ namespace cs_sequence {
 		/// The number of items stored
 		/// </summary>
 		int numItems;
-
+	/******************************************************************************
+	* end private section
+	* *****************************************************************************/
 	private:
 		void clear();
 		void copy(  const SequenceTemplate& copyMe);
