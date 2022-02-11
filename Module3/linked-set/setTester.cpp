@@ -184,6 +184,21 @@ void testSetUnion() {
 
     LinkedSet<string> unionBC = setB.setUnion(setC);
     displaySet(unionBC, "unionBC");
+
+    LinkedSet<string> set1;
+    LinkedSet<string> set2;
+    set1.add({ "6", "5", "0", "2", "8" });
+    set2.add("6");
+    displaySet(set1, "set1");
+    displaySet(set2, "set2");
+
+
+
+    LinkedSet<string> union12 = set1.setUnion(set2);
+    displaySet(union12, "union12");
+
+    LinkedSet<string> union21 = set2.setUnion(set1);
+    displaySet(union21, "union21");
 }
 
 
@@ -248,6 +263,10 @@ setB six five four
 setC ten nine eight seven
 unionAB four five six one two three
 unionBC seven eight nine ten four five six
+set1 8 2 0 5 6
+set2 6
+union12 6 5 0 2 8
+union21 5 0 2 8 6
 testSetIntersection
 setA six five four three two one
 setB six five four
@@ -286,9 +305,4 @@ contains("three"): returns 1; should be 1 (true)
 contains("ten"): returns 0; should be 0 (false)
 remove("one")... shouldn't cause exception and didn't!
 remove("one")... should cause exception and did!
-
-five four three two extra
-
-After clearing the set, isEmpty: returns 1; should be 1 (true)
-
 */
