@@ -149,7 +149,20 @@ namespace cs_set {
     ArraySet<ItemType> ArraySet<ItemType>::setUnion(const ArraySet& otherSet) {
         ArraySet<ItemType> union1;
         union1.add(*this);
-        union1.add(otherSet);
+        
+        
+        std::vector<ItemType> otherItems = otherSet.toVector();
+        //o.k. to have duplicateItemError exception since it is not added to set 
+        for (size_t i = 0; i < otherSet.getCurrentSize(); i++) {
+            try {
+                union1.add(otherItems[i]);
+            }
+            
+            catch (DuplicateItemError e) {
+            }
+        }
+            
+        
         return union1;
     }
     
