@@ -450,7 +450,14 @@ int partition(int list[], int left, int right) {
     return right;
 }
 
-
+/// <summary>
+/// bubble sort left, middle, and right
+/// use middle as pivot
+/// </summary>
+/// <param name="list"></param>
+/// <param name="left"></param>
+/// <param name="right"></param>
+/// <returns></returns>
 int partitionQtA(int list[], int left, int right) {
     int indexPivot;
     int indexFromRight = right - 1;
@@ -473,9 +480,11 @@ int partitionQtA(int list[], int left, int right) {
             return middle;
         }
 
+        std::swap(list[right], list[right-1]);
         // place middle pivot in the right
         std::swap(list[middle], list[right]);
         indexFromLeft++;
+        indexFromRight--;
     }
     int pivot = list[right];
 
