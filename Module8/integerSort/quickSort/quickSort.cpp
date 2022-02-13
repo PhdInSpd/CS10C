@@ -2,10 +2,6 @@
 #include <iostream>
 #include <vector>
 
-int main()
-{
-    std::cout << "Hello World!\n";
-}
 
 // Sorts theArray[first..last].
 void quickSort(std::vector<int>& theArray, int first , int last ) {
