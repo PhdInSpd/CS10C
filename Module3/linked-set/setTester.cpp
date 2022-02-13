@@ -170,6 +170,7 @@ void testSetUnion() {
     LinkedSet<string> setA;
     LinkedSet<string> setB;
     LinkedSet<string> setC;
+    LinkedSet<string> setEmpty;
 
     setA.add({ "one", "two", "three" });
     setB.add({ "four", "five", "six" });
@@ -199,6 +200,11 @@ void testSetUnion() {
 
     LinkedSet<string> union21 = set2.setUnion(set1);
     displaySet(union21, "union21");
+
+    LinkedSet<string> union2Empty = set2.setUnion(setEmpty);
+    displaySet(union2Empty, "union2Empty");
+    LinkedSet<string> unionEmpty2 = setEmpty.setUnion(set2);
+    displaySet(unionEmpty2, "unionEmpty2");
 }
 
 
@@ -210,6 +216,7 @@ void testSetIntersection() {
     cout << "testSetIntersection" << endl;
     LinkedSet<string> setA;
     LinkedSet<string> setB;
+    LinkedSet<string> empty;
 
     setA.add({ "one", "two", "three","four", "five", "six" });
     setB.add({ "four", "five", "six" });
@@ -219,6 +226,13 @@ void testSetIntersection() {
 
     LinkedSet<string> intAB = setA.setIntersection(setB);
     displaySet(intAB, "intAB");
+
+    LinkedSet<string> siEmptyA = empty.setIntersection(setA);
+    displaySet(siEmptyA, "siEmptyA");
+
+    LinkedSet<string> siAEmpty = setA.setIntersection(empty);
+    displaySet(siAEmpty, "siAEmpty");
+
 }
 
 
@@ -230,6 +244,7 @@ void testSetDifference() {
     cout << "testSetDifference" << endl;
     LinkedSet<string> setA;
     LinkedSet<string> setB;
+    LinkedSet<string> empty;
 
     setA.add({ "one", "two", "three","four", "five", "six" });
     setB.add({ "four", "five", "six" });
@@ -239,6 +254,12 @@ void testSetDifference() {
 
     LinkedSet<string> diffAB = setA.setDifference(setB);
     displaySet(diffAB, "differenceAB");
+
+    LinkedSet<string> sdEmptyA = empty.setDifference(setA);
+    displaySet(sdEmptyA, "sdEmptyA");
+
+    LinkedSet<string> sdAEmpty = setA.setDifference(empty);
+    displaySet(sdAEmpty, "sdAEmpty");
 }
 
 
@@ -254,6 +275,7 @@ int main() {
     assignmentTester();
     copyConstructorTester();
     setTester();
+    return 0;
 }
 
 /*
@@ -267,14 +289,20 @@ set1 8 2 0 5 6
 set2 6
 union12 6 5 0 2 8
 union21 5 0 2 8 6
+union2Empty 6
+unionEmpty2 6
 testSetIntersection
 setA six five four three two one
 setB six five four
 intAB four five six
+siEmptyA
+siAEmpty
 testSetDifference
 setA six five four three two one
 setB six five four
 differenceAB one two three
+sdEmptyA
+sdAEmpty one two three four five six
 Testing assignment:
 The original set: seven six five four three two one zero
 
@@ -305,4 +333,9 @@ contains("three"): returns 1; should be 1 (true)
 contains("ten"): returns 0; should be 0 (false)
 remove("one")... shouldn't cause exception and didn't!
 remove("one")... should cause exception and did!
+
+five four three two extra
+
+After clearing the set, isEmpty: returns 1; should be 1 (true)
+
 */

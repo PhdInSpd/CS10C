@@ -285,13 +285,13 @@ namespace cs_set {
         LinkedSet<ItemType> intersection;
 
         Node<ItemType>* curPtr = otherSet.headPtr;
-        do {
+        while (curPtr != nullptr) {
 
             if ( this->contains( curPtr->getItem() ) ) {
                 intersection.add( curPtr->getItem() );
             }
             curPtr = curPtr->getNext();
-        } while (curPtr != nullptr);
+        } 
         return intersection;
     }
 
@@ -305,23 +305,23 @@ namespace cs_set {
         //LinkedSet<ItemType> intersection = setIntersection(otherSet);
         LinkedSet<ItemType> intersection;
         Node<ItemType>* curPtr = otherSet.headPtr;
-        do {
+        while (curPtr != nullptr) {
 
             if (this->contains(curPtr->getItem())) {
                 intersection.add(curPtr->getItem());
             }
             curPtr = curPtr->getNext();
-        } while (curPtr != nullptr);
+        } 
 
         
         LinkedSet<ItemType> difference;
         difference.add(*this);
 
         curPtr = intersection.headPtr;
-        do {
+        while (curPtr != nullptr) {
             difference.remove( curPtr->getItem() );
             curPtr = curPtr->getNext();
-        } while (curPtr != nullptr);
+        } 
 
         return difference;
     }
