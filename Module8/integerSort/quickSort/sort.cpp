@@ -68,6 +68,7 @@ int main() {
     srand(static_cast<unsigned>(time(nullptr)));
     while (true) {
         fill(mainlist, SIZE);
+        mainlist[SIZE - 1] = -10;
         std::cout << "done filling" << std::endl;
         if (PRINT_VALUES) {
             std::cout << "original list: ";
