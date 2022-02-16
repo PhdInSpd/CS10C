@@ -14,7 +14,6 @@ namespace cs_stack {
         /** Adds a new entry to the top of this stack.
              @post  If the operation was successful, newEntry is at the top of the stack.
              @param newEntry  The object to be added as a new entry.
-             @throws CapacityExceededError if entry cannot be pushed because stack is full.
         */
         virtual void push(const ItemType& newEntry) = 0;
 

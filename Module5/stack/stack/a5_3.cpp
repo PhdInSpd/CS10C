@@ -38,11 +38,12 @@ void printStack(string message, ArrayStack<T>& printMe) {
 void testStack() {
 
 	// capacity double test
-	const int STACK_SIZE = 20;
-	int inMemoryChunk = 0;
-	ArrayStack<string> stackDouble(inMemoryChunk);
-	cout << "capacity should double" << endl;
-	for (size_t i = 0; i < STACK_SIZE; i++) {
+	const int STACK_SIZE = 32;
+	ArrayStack<string> stackDouble;
+	cout << "stack is empty:" << stackDouble.isEmpty() << endl;
+	cout << "push test" << endl;
+	size_t i;
+	for (i = 0; i < STACK_SIZE; i++) {
 		stringstream ss;
 		ss << i;
 		string number = ss.str();
@@ -50,24 +51,29 @@ void testStack() {
 		cout << i << ":i "
 			<< stackDouble.top() << ":top "
 			<< stackDouble.getCapacity() << ":capacity "
-			<< stackDouble.getNumItems() << ":getNumItems "
+			<< stackDouble.getNumItems() << ":getNumItems() "
 			<< endl;
 	}
-
-	inMemoryChunk = 2;
-	ArrayStack<string> stack3K(inMemoryChunk);
-	cout << "capacity increase by (2n+1)*" << inMemoryChunk << endl;
-	for (size_t i = 0; i < STACK_SIZE; i++) {
+	for (i = 0; i < STACK_SIZE; i++) {
+		stackDouble.pop();
+	}
+	for (i = 0; i < STACK_SIZE; i++) {
 		stringstream ss;
-		ss << i * 10;
+		ss << i;
 		string number = ss.str();
-		stack3K.push(number);
+		stackDouble.push(number);
 		cout << i << ":i "
-			<< stack3K.top() << ":top "
-			<< stack3K.getCapacity() << ":capacity "
-			<< stack3K.getNumItems() << ":getNumItems "
+			<< stackDouble.top() << ":top "
+			<< stackDouble.getCapacity() << ":capacity "
+			<< stackDouble.getNumItems() << ":getNumItems() "
 			<< endl;
-	};
+	}
+	
+
+	cout << "stack is empty:" << stackDouble.isEmpty() << endl;
+
+		
+
 
 	//test copy constructor
 	ArrayStack<string> copied(stackDouble);
@@ -75,14 +81,24 @@ void testStack() {
 
 	//test assignment operator
 	ArrayStack<string> assignment;
-	assignment = stack3K;
+	assignment = stackDouble;
 
 	//test 
 	printStack("print original stackDouble", stackDouble);
 	printStack("print copy of stackDouble", copied);
 
-	printStack("print original stack3K", stack3K);
-	printStack("print assignment of stack3K", assignment);
+	// pop
+	cout << "pop test" << endl;
+	for (size_t i = 0; !stackDouble.isEmpty(); i++) {
+		cout << stackDouble.top() << ":top "
+			<< stackDouble.getCapacity() << ":capacity "
+			<< stackDouble.getNumItems() << ":getNumItems() "
+			<< endl;
+		stackDouble.pop();
+	}
+
+
+
 
 	// test exception
 	stackDouble.push("salt n peppa");
@@ -106,3 +122,7 @@ void testStack() {
 
 }
 
+
+/*
+
+*/

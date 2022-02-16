@@ -24,23 +24,120 @@ Do programming problem 6 from chapter 6 of the text.
 #include <string>
 #include <stack>
 #include <vector>
+#include <exception>
 
 using namespace std;
 
+class MissingOperator : exception {
+
+};
 /// <summary>
 /// is character a decimal character '0'...'9'
 /// </summary>
 /// <param name="ch"></param>
 /// <returns></returns>
-bool isOperand( char ch ) {
-    return ch >= '0' && ch <= '9';
-}
+bool isOperand(char ch);
 
 /// <summary>
 /// return true if +,-,*,/ else false
 /// </summary>
 /// <param name="ch"></param>
 /// <returns></returns>
+bool isOperator(char ch);
+
+/// <summary>
+/// pre: valid operation
+/// post: operand1 op operand2
+/// </summary>
+/// <param name="operand1"></param>
+/// <param name="op"></param>
+/// <param name="operand2"></param>
+/// <returns></returns>
+int  performOperation(int operand1, char op, int operand2);
+
+/// <summary>
+/// pre:  ch is an operator
+/// post:
+/// @return the importance of operator
+/// </summary>
+/// <param name="ch"></param>
+/// <returns></returns>
+int precedence(char ch);
+
+/// <summary>
+/// pre: simple infix expressions that consist of single-digit operands; the operators +, –, *, and /; and parentheses.
+///  Assume that unary operators are illegal and that the expression contains no embedded spaces
+/// post: 
+///  @return a stack of string  that represents the postfix operation
+///   return a blank if infix expression is not balanced
+/// </summary>
+/// <param name="infix"></param>
+/// <returns></returns>
+string infixToPostfix(const string& infix);
+
+/// <summary>
+/// pre: a valid postfix expression
+/// post: 
+///  @return the calculated value for the postfix expression.
+///          returns zero if postfix is blank.
+///          throws MissingOperator exception if operator is missing
+/// </summary>
+/// <param name="postfix"></param>
+/// <returns></returns>
+int evaluateInfix(const string& postfix);
+
+
+/// <summary>
+/// returns true if every '(' has a matching ')'
+/// </summary>
+/// <param name="infix"></param>
+/// <returns></returns>
+bool isBalanced(const string& infix);
+
+
+
+
+
+
+int main() {
+    vector<string> infixs = {   "",
+                                ")2+3(",
+                                "((23)",
+                                "23",
+                                "1 + (5 - 2) / 2 + 2",
+                                "2 * 3 - 5 * 1",
+                                "9 / 3 + 4 / 2",
+                                "9 / (3 + 4) / 2",
+                                "9 / (3 + 4)2" };
+    for (size_t i = 0; i < infixs.size(); i++) {
+        std::cout << "operation: " << infixs[i] << endl;
+        string postfix = infixToPostfix(infixs[i]);
+        
+        try {
+            int result1 = evaluateInfix(postfix);
+            cout << " = " << result1 << endl;
+        }
+        catch (MissingOperator e) {
+            std::cout << "missing operator" << endl;
+        }
+        
+    }
+}
+
+
+
+
+
+
+bool isOperand(char ch) {
+    return ch >= '0' && ch <= '9';
+}
+
+
+
+
+
+
 bool isOperator(char ch) {
     switch (ch)
     {
@@ -58,14 +155,10 @@ bool isOperator(char ch) {
     }
 }
 
-/// <summary>
-/// pre: valid operation
-/// post: operand1 op operand2
-/// </summary>
-/// <param name="operand1"></param>
-/// <param name="op"></param>
-/// <param name="operand2"></param>
-/// <returns></returns>
+
+
+
+
 int  performOperation(int operand1, char op, int operand2) {
     switch (op) {
     case '+':
@@ -81,11 +174,11 @@ int  performOperation(int operand1, char op, int operand2) {
         break;
     }
 }
-/// <summary>
-/// pre:  ch is an operator
-/// </summary>
-/// <param name="ch"></param>
-/// <returns></returns>
+
+
+
+
+
 int precedence(char ch) {
     switch (ch)
     {
@@ -102,18 +195,19 @@ int precedence(char ch) {
         break;
     }
 }
-/// <summary>
-/// pre: simple infix expressions that consist of single-digit operands; the operators +, –, *, and /; and parentheses.
-///  Assume that unary operators are illegal and that the expression contains no embedded spaces
-/// post: 
-///  @return a stack of string  that represents the postfix operation
-/// </summary>
-/// <param name="infix"></param>
-/// <returns></returns>
-string infixToPostfix( const string & infix) {
+
+
+
+
+
+
+string infixToPostfix(const string& infix) {
     string postfixExp = "";
     stack<char> aStack;
-
+    if (!isBalanced(infix)) {
+        cout << "infix expression not balanced" << endl;
+        return postfixExp;
+    }
     for (size_t i = 0; i < infix.size(); i++) {
         char ch = infix[i];
         if (isOperand(ch)) { // Append operand to end of postfix expression—step 1
@@ -140,9 +234,9 @@ string infixToPostfix( const string & infix) {
             aStack.pop(); // Remove the open parenthesis
         }
     }
-    
+
     // Append to postfixExp the operators remaining in the stack—step 5
-    while ( !aStack.empty() ) {
+    while (!aStack.empty()) {
         postfixExp = postfixExp + aStack.top();
         aStack.pop();
     }
@@ -150,13 +244,11 @@ string infixToPostfix( const string & infix) {
     return postfixExp;
 }
 
-/// <summary>
-/// pre: a valid postfix expression
-/// post: 
-///  @return the calculated value for the postfix expression.
-/// </summary>
-/// <param name="postfix"></param>
-/// <returns></returns>
+
+
+
+
+
 int evaluateInfix(const string& postfix) {
     stack<char> aStack;
     for (size_t i = 0; i < postfix.size(); i++) {
@@ -165,7 +257,7 @@ int evaluateInfix(const string& postfix) {
             aStack.push(ch);
         }
         else { // ch is an operator named op
-        
+
             // load operands
             int operand2 = aStack.top() - '0';
             aStack.pop();
@@ -181,26 +273,63 @@ int evaluateInfix(const string& postfix) {
             aStack.push(stringResult[0]);
         }
     }
-    // convert back to integer
-    return aStack.top()-'0';
-}
-int main() {
-    vector<string> infixs = { "1+(5-2)/2 + 2", "2*3-5*1", "9/3+4/2", "9/(3+4)/2" };
-    for (size_t i = 0; i < infixs.size(); i++) {
-        std::cout << "operation: " << infixs[i];
-        string postfix = infixToPostfix(infixs[i]);
-        int result1 = evaluateInfix(postfix);
-        cout << " = " << result1 << endl;
+    // no operator and operand
+    if (aStack.empty()) return 0;
+
+    if (aStack.size() != 1) {
+        throw MissingOperator();
     }
-    
 
+    // convert back to integer
+    return aStack.top() - '0';
 }
 
+
+
+
+
+
+
+bool isBalanced(const string& infix) {
+    stack<char> aStack;
+    for (size_t i = 0; i < infix.length(); i++){
+        char c = infix[i];
+        switch (c)
+        {
+        case '(':
+            aStack.push(c);
+            break;
+        case ')':
+            if (aStack.empty()) return false;
+            aStack.pop();
+            break;
+        default:
+            break;
+        }
+    }
+    return aStack.empty();
+}
 /*
  output
 
-operation: 1+(5-2)/2 + 2 = 4
-operation: 2*3-5*1 = 1
-operation: 9/3+4/2 = 5
-operation: 9/(3+4)/2 = 0
+operation:
+ = 0
+operation: )2+3(
+infix expression not balanced
+ = 0
+operation: ((23)
+infix expression not balanced
+ = 0
+operation: 23
+missing operator
+operation: 1 + (5 - 2) / 2 + 2
+ = 4
+operation: 2 * 3 - 5 * 1
+ = 1
+operation: 9 / 3 + 4 / 2
+ = 5
+operation: 9 / (3 + 4) / 2
+ = 0
+operation: 9 / (3 + 4)2
+missing operator
 */

@@ -23,9 +23,6 @@ namespace cs_stack {
 
         int numItems;
         int capacity;
-        int memoryIndex;
-        int memoryChunk;
-        bool getDoubleCapacity();
         void handleCapacity();
         void clear();
         /// <summary>
@@ -37,16 +34,11 @@ namespace cs_stack {
         static void copy( ItemType* itemsPtr, ItemType* destinationPtr, int numItems);
         void clone(const ArrayStack& copy);
     public:
+        static const int DEFAULT_CAPACITY = 1;
         int getNumItems() const;
         int getCapacity() const;
         class StackEmptyError : std::exception{};
-        /// <summary>
-        /// pre: inMemoryChunk should be at least 0.
-        ///  if inMemoryChunk is zero or less the memory capacity will double 
-        ///  else it will increment by 3memoryChunk, 5memoryChunk, 7memoryChunk, ...
-        /// </summary>
-        /// <param name="inMemoryChunk"></param>
-        ArrayStack(int inMemoryChunk=0);
+        ArrayStack();
         ArrayStack(const ArrayStack& aStack);
         ArrayStack& operator=(const ArrayStack& copyMe);
         ~ArrayStack();
