@@ -27,8 +27,8 @@ namespace cs_sequence {
 	* aftere test make this private
 	* start private section
 	* *****************************************************************************/
-	//private:
-	public:
+	private:
+	//public:
 		/// <summary>
 		///  The head and tail pointers of the linked list. If the Sequence has no items, 
 		/// then these pointers are both nullptr. The reason for the tail pointer is the 

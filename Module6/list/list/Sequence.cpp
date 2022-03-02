@@ -45,7 +45,7 @@ namespace cs_sequence {
 
     template<typename ItemType>
     void SequenceTemplate<ItemType>::insert(const value_type& entry) {
-        Node* new_node = new Node;
+        node* new_node = new node;
         new_node->data = entry;
         numItems++;
 
@@ -77,7 +77,7 @@ namespace cs_sequence {
     void SequenceTemplate<ItemType>::remove_current() {
         assert(is_item());
         if (precursor == nullptr) {
-            Node* next = cursor->nextPtr;
+            node* next = cursor->nextPtr;
             delete cursor;
             cursor = next;
         }

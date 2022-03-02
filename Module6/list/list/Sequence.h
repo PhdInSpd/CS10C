@@ -14,13 +14,13 @@ namespace cs_sequence {
 	template<typename ItemType>
 	class SequenceTemplate {
 	public:
-		class Node {
+		class node {
 		public:
-			Node() :data(0), nextPtr(nullptr)/*, lastPtr(nullptr)*/ {
+			node() :data(0), nextPtr(nullptr)/*, lastPtr(nullptr)*/ {
 			}
 			ItemType data;
-			Node* nextPtr;
-			/*Node* lastPtr;*/
+			node* nextPtr;
+			/*node* lastPtr;*/
 		};
 	private:
 		/// <summary>
@@ -35,12 +35,12 @@ namespace cs_sequence {
 		/// current node. But if there is no current node, then attach places its new item
 		///  at the tail of the list, so it makes sense to keep a tail pointer around.
 		/// </summary>
-		Node* headPtr;
-		Node* tailPtr;
+		node* headPtr;
+		node* tailPtr;
 		/// <summary>
 		///  Points to the node with the current item (or nullptr if there is no current item).
 		/// </summary>
-		Node* cursor;
+		node* cursor;
 		/// <summary>
 		/// precursor. Points to the node before current item, or nullptr if there is no
 		///  current item or if the current item is the first node. Note that precursor 
@@ -53,7 +53,7 @@ namespace cs_sequence {
 		///  function will work by adding the new item after the precursor node -- which
 		///  is also just before the cursor node.
 		/// </summary>
-		Node* precursor;
+		node* precursor;
 
 
 	public:
