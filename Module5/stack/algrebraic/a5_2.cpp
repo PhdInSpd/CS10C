@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 student   : Jose Alfredo Martinez
 instructor: Dave Harden
 class     : CS 10C
@@ -7,7 +7,7 @@ file name : a5_2.cpp
 
 
 Do programming problem 6 from chapter 6 of the text.
-   
+
     Use the pseudocode algorithm that evaluates postfix expressions given at the end of section 6.3.1
     and the pseudocode algorithm that converts an infix expression to postfix form given near the end
     of section 6.3.2. Use the STL stack class.
@@ -65,7 +65,7 @@ int  performOperation(int operand1, char op, int operand2);
 int precedence(char ch);
 
 /// <summary>
-/// pre: simple infix expressions that consist of single-digit operands; the operators +, –, *, and /; and parentheses.
+/// pre: simple infix expressions that consist of single-digit operands; the operators +, ï¿½, *, and /; and parentheses.
 ///  Assume that unary operators are illegal and that the expression contains no embedded spaces
 /// post: 
 ///  @return a stack of string  that represents the postfix operation
@@ -100,7 +100,7 @@ bool isBalanced(const string& infix);
 
 
 int main() {
-    vector<string> infixs = {   "",
+    vector<string> infixs = { "",
                                 ")2+3(",
                                 "((23)",
                                 "23",
@@ -110,9 +110,14 @@ int main() {
                                 "9 / (3 + 4) / 2",
                                 "9 / (3 + 4)2" };
     for (size_t i = 0; i < infixs.size(); i++) {
-        std::cout << "operation: " << infixs[i] << endl;
+        std::cout << "infix operation: " << infixs[i] << endl;
         string postfix = infixToPostfix(infixs[i]);
-        
+        std::cout << "postfix conversion: " << postfix << endl;
+        if (postfix == "") {
+            std::cout << endl;
+            continue;
+        }
+
         try {
             int result1 = evaluateInfix(postfix);
             cout << " = " << result1 << endl;
@@ -120,7 +125,8 @@ int main() {
         catch (MissingOperator e) {
             std::cout << "missing operator" << endl;
         }
-        
+        std::cout << endl;
+
     }
 }
 
@@ -210,13 +216,13 @@ string infixToPostfix(const string& infix) {
     }
     for (size_t i = 0; i < infix.size(); i++) {
         char ch = infix[i];
-        if (isOperand(ch)) { // Append operand to end of postfix expression—step 1
+        if (isOperand(ch)) { // Append operand to end of postfix expressionï¿½step 1
             postfixExp = postfixExp + ch;
         }
-        else if (ch == '(') { // Save '(' on stack—step 2
+        else if (ch == '(') { // Save '(' on stackï¿½step 2
             aStack.push(ch);
         }
-        else if (isOperator(ch)) { // Process stack operators of greater precedence—step 3
+        else if (isOperator(ch)) { // Process stack operators of greater precedenceï¿½step 3
             while (!aStack.empty() &&
                 aStack.top() != '(' &&
                 precedence(ch) <= precedence(aStack.top())) {
@@ -226,7 +232,7 @@ string infixToPostfix(const string& infix) {
             aStack.push(ch); // Save the operator
 
         }
-        else if (ch == ')') { // Pop stack until matching '(' —step 4
+        else if (ch == ')') { // Pop stack until matching '(' ï¿½step 4
             while (aStack.top() != '(') {
                 postfixExp = postfixExp + aStack.top();
                 aStack.pop();
@@ -235,7 +241,7 @@ string infixToPostfix(const string& infix) {
         }
     }
 
-    // Append to postfixExp the operators remaining in the stack—step 5
+    // Append to postfixExp the operators remaining in the stackï¿½step 5
     while (!aStack.empty()) {
         postfixExp = postfixExp + aStack.top();
         aStack.pop();
@@ -292,7 +298,7 @@ int evaluateInfix(const string& postfix) {
 
 bool isBalanced(const string& infix) {
     stack<char> aStack;
-    for (size_t i = 0; i < infix.length(); i++){
+    for (size_t i = 0; i < infix.length(); i++) {
         char c = infix[i];
         switch (c)
         {
@@ -310,26 +316,40 @@ bool isBalanced(const string& infix) {
     return aStack.empty();
 }
 /*
- output
+ output from a5_2.cpp
 
-operation:
- = 0
-operation: )2+3(
+infix operation:
+postfix conversion:
+
+infix operation: )2+3(
 infix expression not balanced
- = 0
-operation: ((23)
+postfix conversion:
+
+infix operation: ((23)
 infix expression not balanced
- = 0
-operation: 23
+postfix conversion:
+
+infix operation: 23
+postfix conversion: 23
 missing operator
-operation: 1 + (5 - 2) / 2 + 2
+
+infix operation: 1 + (5 - 2) / 2 + 2
+postfix conversion: 152-2/+2+
  = 4
-operation: 2 * 3 - 5 * 1
+
+infix operation: 2 * 3 - 5 * 1
+postfix conversion: 23*51*-
  = 1
-operation: 9 / 3 + 4 / 2
+
+infix operation: 9 / 3 + 4 / 2
+postfix conversion: 93/42/+
  = 5
-operation: 9 / (3 + 4) / 2
+
+infix operation: 9 / (3 + 4) / 2
+postfix conversion: 934+/2/
  = 0
-operation: 9 / (3 + 4)2
+
+infix operation: 9 / (3 + 4)2
+postfix conversion: 934+2/
 missing operator
 */

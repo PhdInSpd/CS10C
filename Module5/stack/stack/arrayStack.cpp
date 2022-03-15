@@ -172,6 +172,7 @@ namespace cs_stack {
         if (!isEmpty())
         {
             numItems--;
+            handleCapacity();
         }
         else {
             throw StackEmptyError();
@@ -193,9 +194,9 @@ namespace cs_stack {
     }
 
     /*
-    output
+    output for a5_3.cpp
 
-    stack is empty:1
+   stack is empty:1
 push test
 0:i 0:top 1:capacity 1:getNumItems()
 1:i 1:top 2:capacity 2:getNumItems()
@@ -229,8 +230,41 @@ push test
 29:i 29:top 32:capacity 30:getNumItems()
 30:i 30:top 32:capacity 31:getNumItems()
 31:i 31:top 32:capacity 32:getNumItems()
-0:i 0:top 16:capacity 1:getNumItems()
-1:i 1:top 8:capacity 2:getNumItems()
+pop test
+0:i 30:top 32:capacity 31:getNumItems()
+1:i 29:top 32:capacity 30:getNumItems()
+2:i 28:top 32:capacity 29:getNumItems()
+3:i 27:top 32:capacity 28:getNumItems()
+4:i 26:top 32:capacity 27:getNumItems()
+5:i 25:top 32:capacity 26:getNumItems()
+6:i 24:top 32:capacity 25:getNumItems()
+7:i 23:top 32:capacity 24:getNumItems()
+8:i 22:top 32:capacity 23:getNumItems()
+9:i 21:top 32:capacity 22:getNumItems()
+10:i 20:top 32:capacity 21:getNumItems()
+11:i 19:top 32:capacity 20:getNumItems()
+12:i 18:top 32:capacity 19:getNumItems()
+13:i 17:top 32:capacity 18:getNumItems()
+14:i 16:top 32:capacity 17:getNumItems()
+15:i 15:top 32:capacity 16:getNumItems()
+16:i 14:top 16:capacity 15:getNumItems()
+17:i 13:top 16:capacity 14:getNumItems()
+18:i 12:top 16:capacity 13:getNumItems()
+19:i 11:top 16:capacity 12:getNumItems()
+20:i 10:top 16:capacity 11:getNumItems()
+21:i 9:top 16:capacity 10:getNumItems()
+22:i 8:top 16:capacity 9:getNumItems()
+23:i 7:top 16:capacity 8:getNumItems()
+24:i 6:top 8:capacity 7:getNumItems()
+25:i 5:top 8:capacity 6:getNumItems()
+26:i 4:top 8:capacity 5:getNumItems()
+27:i 3:top 8:capacity 4:getNumItems()
+28:i 2:top 4:capacity 3:getNumItems()
+29:i 1:top 4:capacity 2:getNumItems()
+30:i 0:top 2:capacity 1:getNumItems()
+31:i empty:top 1:capacity 0:getNumItems()
+0:i 0:top 1:capacity 1:getNumItems()
+1:i 1:top 2:capacity 2:getNumItems()
 2:i 2:top 4:capacity 3:getNumItems()
 3:i 3:top 4:capacity 4:getNumItems()
 4:i 4:top 8:capacity 5:getNumItems()
@@ -328,5 +362,10 @@ print copy of stackDouble
 2
 1
 0
+pop test
+first pop should not throw exception
+no exception
+2nd pop should  throw exception
+StackEmptyError exception
     */
 }

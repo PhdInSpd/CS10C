@@ -54,8 +54,25 @@ void testStack() {
 			<< stackDouble.getNumItems() << ":getNumItems() "
 			<< endl;
 	}
+	cout << "pop test" << endl;
 	for (i = 0; i < STACK_SIZE; i++) {
+		
 		stackDouble.pop();
+		if (!stackDouble.isEmpty()) {
+			cout << i << ":i "
+				<< stackDouble.top() << ":top "
+				<< stackDouble.getCapacity() << ":capacity "
+				<< stackDouble.getNumItems() << ":getNumItems() "
+				<< endl;
+		}
+		else {
+			cout << i << ":i "
+				<< "empty" << ":top "
+				<< stackDouble.getCapacity() << ":capacity "
+				<< stackDouble.getNumItems() << ":getNumItems() "
+				<< endl;
+		}
+		
 	}
 	for (i = 0; i < STACK_SIZE; i++) {
 		stringstream ss;
@@ -119,10 +136,4 @@ void testStack() {
 	catch (ArrayStack<string>::StackEmptyError e) {
 		cout << "StackEmptyError exception" << endl;
 	}
-
 }
-
-
-/*
-
-*/
