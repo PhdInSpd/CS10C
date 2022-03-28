@@ -3,7 +3,7 @@ student: Jose Alfredo Martinez
 instructor : Dave Harden
 class : CS 10C
     date : Feb 09, 2022
-    file name :
+    file name : a8_2.cpp
 
 what the program does and how the code works : compares a O(n) sort to an O(n^2)
 O(n) was implemented by doing one quick sort pass
