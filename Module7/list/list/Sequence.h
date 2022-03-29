@@ -134,7 +134,6 @@ namespace cs_sequence {
 	/// An integer version of sequenceTemplate
 	/// </summary>
 	class Sequence : public SequenceTemplate<int> {
-
 	};
 }
 #include "Sequence.cpp"	
