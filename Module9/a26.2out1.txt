@@ -1,0 +1,24 @@
+Simulation Begins
+Processing customer #1 arrival at time: 1
+Processing customer #2 arrival at time: 2
+Processing customer #3 arrival at time: 4
+Processing customer #1 departure at time: 6
+Processing customer #2 departure at time: 11
+Processing customer #3 departure at time: 16
+Processing customer #4 arrival at time: 20
+Processing customer #5 arrival at time: 22
+Processing customer #6 arrival at time: 24
+Processing customer #4 departure at time: 25
+Processing customer #7 arrival at time: 26
+Processing customer #8 arrival at time: 28
+Processing customer #5 departure at time: 30
+Processing customer #9 arrival at time: 30
+Processing customer #6 departure at time: 35
+Processing customer #7 departure at time: 40
+Processing customer #8 departure at time: 45
+Processing customer #9 departure at time: 50
+Processing customer #10 arrival at time: 88
+Processing customer #10 departure at time: 91
+Final Statistics: 
+    Total number of people processed: 10
+    Average amount of time spent waiting: 5.6
