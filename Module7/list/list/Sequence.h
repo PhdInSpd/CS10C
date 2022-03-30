@@ -10,7 +10,6 @@ Declare a list class
 #pragma once
 #include <cassert>
 namespace cs_sequence {
-
 	template<typename ItemType>
 	class SequenceTemplate {
 	public:
