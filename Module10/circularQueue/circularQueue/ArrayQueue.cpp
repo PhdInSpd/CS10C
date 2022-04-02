@@ -26,13 +26,16 @@ ArrayQueue<ItemType>::ArrayQueue(const ArrayQueue& copy) {
 template<typename ItemType>
 void ArrayQueue<ItemType>::clone(const ArrayQueue& copy) {
     capacity = copy.capacity;
-    items = new ItemType[capacity];
+    items = nullptr;
+    if (capacity > 0) {
+        items = new ItemType[capacity];
+    }
 
     numItems = copy.numItems;
     front = copy.front;
     back = copy.back;
 
-    for (size_t i = 0; i < numItems; i++) {
+    for (size_t i = 0; i < capacity; i++) {
         items[i] = copy.items[i];
     }
 }
