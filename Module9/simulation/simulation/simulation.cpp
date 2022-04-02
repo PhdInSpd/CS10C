@@ -241,7 +241,7 @@ public:
 
             // find customer statistics
             // what should be the type?
-            //auto finder = [customer](const Customer& inCust) { return inCust.customerID == customer.customerID; };
+            // auto finder = [customer](const Customer& inCust) { return inCust.customerID == customer.customerID; };
             std::vector<Customer>::iterator foundCustomer = std::find_if(
                                                                     begin(customers),
                                                                     end(customers),

@@ -1,0 +1,13 @@
+Main Task:
+O	-	Write an array-based implementation of a queue that uses a resizable, circular array to represent the items in the
+		queue.
+
+Detail:
+O		-	Your class should have 
+			-	a DEFAULT_CAPACITY constant with default value 1
+			-	a capacity data member
+O	-	Your class should double the size of the array when an attempt is made to enqueue an item when the capacity is full
+O	-	Your class should halve the size of the array when an item is dequeued if it causes the number of items to be half the capacity or less
+O	-	enqueue() will be void because it is no longer possible to exceed the queue's capacity. 
+O	-	dequeue() will be void because you should throw a PrecondViolatedExcep exception if the queue is empty, instead of returning false.
+O	-	Be sure to test your code exhaustively
