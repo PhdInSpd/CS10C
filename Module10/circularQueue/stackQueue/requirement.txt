@@ -1,0 +1,17 @@
+Assignment 10.2 [25 points]
+
+Rewrite your sequence class but this time instead of the items being stored in a linked list, they will be stored using two STL stacks as private member variables. You must use the following implementation:
+
+X	-	There will be exactly two data members
+X		-	STL stack1
+X		-	STL stack2
+X	-	The bottom of stack1 is the beginning of the sequence.
+X	-	The elements of the sequence continue up to the top of stack1.
+X	-	The next element of the sequence is then the top of stack2.
+X	-	The elements of the sequence then continue down to the bottom of stack2 (which is the end of the sequence).
+X	-	If there is a current element, then that element is at the top of stack1. As a result, if there is no current item, stack1 will be empty.
+X	-	Your class should be placed in a namespace "cs-sequence".
+
+X	-	The sequence tester from previous assignments should definitely still work with your new sequence class; however, in my experience it does not do a good job of exhaustively testing it.
+X	-	Note: You do not need to write your own assignment operator, copy constructor, or destructor, because you won't be doing any dynamic memory allocation in your class.
+

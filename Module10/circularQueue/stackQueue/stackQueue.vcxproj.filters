@@ -18,25 +18,19 @@
     <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArrayQueue.cpp">
+    <ClCompile Include="Sequence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrecondViolatedExcep.cpp">
+    <ClCompile Include="client2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QueueInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PrecondViolatedExcep.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Text Include="requirement.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="requirements.txt" />
+    <ClInclude Include="Sequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

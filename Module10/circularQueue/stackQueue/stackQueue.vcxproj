@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8b228083-6227-4f91-be7a-783cd521a6d9}</ProjectGuid>
-    <RootNamespace>circularQueue</RootNamespace>
+    <ProjectGuid>{819ca2ca-bf71-40df-b4e3-2965df099dc8}</ProjectGuid>
+    <RootNamespace>stackQueue</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,20 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArrayQueue.cpp">
+    <ClCompile Include="client.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="client.cpp" />
-    <ClCompile Include="PrecondViolatedExcep.cpp" />
+    <ClCompile Include="client2.cpp" />
+    <ClCompile Include="Sequence.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayQueue.h" />
-    <ClInclude Include="PrecondViolatedExcep.h" />
-    <ClInclude Include="QueueInterface.h" />
+    <Text Include="requirement.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="requirements.txt" />
+    <ClInclude Include="Sequence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

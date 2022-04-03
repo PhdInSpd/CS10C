@@ -1,5 +1,12 @@
-#ifndef ARRAY_QUEUE_H
-#define ARRAY_QUEUE_H
+/*
+student: Jose Alfredo Martinez
+instructor : Dave Harden
+class : CS 10C
+date : April 02, 2022
+file name : ArrayQueue.h
+description: Array Queue for circular list that automaticly resizes
+*/
+#pragma once
 
 #include "QueueInterface.h"
 #include "PrecondViolatedExcep.h"
@@ -31,4 +38,3 @@ class ArrayQueue : public QueueInterface<ItemType>
 };
 
 #include "ArrayQueue.cpp"
-#endif
