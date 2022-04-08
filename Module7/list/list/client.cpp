@@ -545,7 +545,7 @@ void test_etc() {
     s3 = empty;
     cout << "s3 after empty sequence assigned:" << endl;
     print(s3);
-    assert(s3.numItems == 0 && s3.cursor == nullptr && s3.precursor == nullptr &&
+    assert( s3.numItems == 0 && s3.cursor == nullptr && s3.precursor == nullptr &&
         s3.headPtr == nullptr && s3.tailPtr == nullptr);
     checkData(s3, "");
 
