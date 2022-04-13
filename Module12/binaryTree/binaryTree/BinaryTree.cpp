@@ -57,15 +57,19 @@ void binarytree::del_aux(treenode*& root,
 	}
 	else {
 		int max;
+		// step 1
 		remove_max(root->left, max);
+		// step 2
 		root->data = max;
 		found = true;
 	}
 }
 
 // pre: root != nullptr
-
-void binarytree::remove_max(treenode*& root, int& max) {
+// when removing a node 
+//	1) find find the max value in the left tree, return that max value and delete that max node
+//	2) replace max value in root node
+void binarytree::remove_max( treenode*& root, int& max ) {
 	if (root->right == nullptr) {
 		max = root->data;
 		treenode* tempptr = root;
