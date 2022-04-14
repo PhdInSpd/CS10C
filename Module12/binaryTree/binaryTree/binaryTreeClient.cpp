@@ -4,7 +4,13 @@
 #include "binarytree.h"
 using namespace std;
 
+void testBinaryTree();
+
 int main() {
+	testBinaryTree();
+}
+
+void testBinaryTree() {
 	binarytree list;
 
 	int num;
@@ -88,5 +94,4 @@ int main() {
 	cout << endl << "list2 should be unchanged.  Here it is: ";
 	list2.print();
 	cout << endl;
-
 }
