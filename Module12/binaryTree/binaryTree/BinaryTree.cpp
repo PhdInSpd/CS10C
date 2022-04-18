@@ -1,6 +1,7 @@
 // Here is the file binarytree.cpp
 
 #include <iostream>
+#include <iomanip>
 #include "binarytree.h"
 using namespace std;
 
@@ -15,6 +16,10 @@ void binarytree::print() const {
 	print_aux(root);
 }
 
+
+void binarytree::printLevel() const {
+	print_level_aux(root,0);
+}
 
 void binarytree::insert(int item) {
 	insert_aux(root, item);
@@ -138,4 +143,44 @@ void binarytree::print_aux(const treenode* root) {
 		cout << root->data << " ";
 		print_aux(root->right);
 	}
+}
+
+
+void binarytree::print_level_aux(const treenode* root, int level) {
+	if (root != nullptr) {
+		print_level_aux(root->right, level + 1);
+		cout << std::setw((level +1) * 7) << root->data << endl << endl;
+		print_level_aux(root->left, level + 1);
+	}
+}
+
+
+binarytree::treenode* binarytree::read_tree_aux(int n) {
+	int rootItem;
+	if (n > 0) {
+		treenode* treePtr = new treenode;
+		treePtr->left = nullptr;
+		treePtr->right = nullptr;
+
+
+		//      cin >> rootItem;
+		//      treePtr -> data = rootItem;
+
+		treePtr->left = read_tree_aux(n / 2);
+
+
+		cin >> rootItem;
+		treePtr->data = rootItem;
+
+
+		treePtr->right = read_tree_aux((n - 1) / 2);
+		return treePtr;
+	}
+	else {
+		return nullptr;
+	}
+}
+
+void binarytree::readTree(int n) {
+	root = read_tree_aux(n);
 }
