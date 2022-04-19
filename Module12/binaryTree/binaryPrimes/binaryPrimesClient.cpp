@@ -12,9 +12,20 @@ using namespace std;
 
 void testBinaryPrimes();
 
+
+
+
+
+
 int main() {
 	testBinaryPrimes();
 }
+
+
+
+
+
+
 
 int getRandomPrime() {
 	bool done = false;
@@ -25,6 +36,12 @@ int getRandomPrime() {
 	}
 	return r;
 }
+
+
+
+
+
+
 void testBinaryPrimes() {
 	binarytree myTree;
 	for (int i = 0; i < 20; i++) {
@@ -81,6 +98,8 @@ void testBinaryPrimes() {
 		cout << "copy with half removed:(" << copy.size() << ")"; copy.print(); cout << endl;
 		cout << "noPrimes:(" << myTree.size() << ")"; myTree.print(); cout << endl;
 
+		myTree = myTree;
+
 		myTree = copy;
 		cout << "myTree gets copy:(" << myTree.size() << ")"; myTree.print(); cout << endl;
 	}
@@ -89,6 +108,10 @@ void testBinaryPrimes() {
 
 	cout << endl;
 }
+
+
+
+
 
 
 /*

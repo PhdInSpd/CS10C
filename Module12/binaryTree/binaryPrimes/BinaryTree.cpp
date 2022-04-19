@@ -9,9 +9,18 @@ class : CS 10C
 #include "binarytree.h"
 using namespace std;
 
+
+
+
+
+
 binarytree::binarytree() {
 	root = nullptr;
 }
+
+
+
+
 
 
 binarytree::binarytree(const binarytree& copyMe) {
@@ -20,12 +29,22 @@ binarytree::binarytree(const binarytree& copyMe) {
 }
 
 
+
+
+
+
 binarytree& binarytree::operator=( const binarytree& copyMe) {
-	clear( root );
-	copy( copyMe.root, root);
-	mSize = copyMe.mSize;
+	if (this != &copyMe) {
+		clear(root);
+		copy(copyMe.root, root);
+		mSize = copyMe.mSize;
+	}
 	return *this;
 }
+
+
+
+
 
 
 binarytree::~binarytree() {
@@ -34,9 +53,17 @@ binarytree::~binarytree() {
 }
 
 
+
+
+
+
 void binarytree::print() const {
 	print_aux(root);
 }
+
+
+
+
 
 
 void binarytree::insert(int item) {
@@ -45,15 +72,27 @@ void binarytree::insert(int item) {
 }
 
 
+
+
+
+
 binarytree::size_type binarytree::size() const {
 	return mSize;
 	//return size_aux(root);
 }
 
 
+
+
+
+
 int binarytree::find(int target, bool& found) const {
 	return find_aux(root, target, found);
 }
+
+
+
+
 
 
 void binarytree::del(int target, bool& found) {
@@ -62,6 +101,10 @@ void binarytree::del(int target, bool& found) {
 		mSize--;
 	}
 }
+
+
+
+
 
 
 void binarytree::del_aux(treenode*& root,
@@ -93,6 +136,11 @@ void binarytree::del_aux(treenode*& root,
 	}
 }
 
+
+
+
+
+
 // pre: root != nullptr
 // when removing a node 
 //	1) find find the max value in the left tree, return that max value and delete that max node
@@ -108,6 +156,11 @@ void binarytree::remove_max( treenode*& root, int& max ) {
 		remove_max(root->right, max);
 	}
 }
+
+
+
+
+
 
 int binarytree::find_aux(const treenode* root,
 	int target,
@@ -130,6 +183,10 @@ int binarytree::find_aux(const treenode* root,
 }
 
 
+
+
+
+
 binarytree::size_type binarytree::size_aux(const treenode* root) {
 	if (root == nullptr) {
 		return 0;
@@ -140,6 +197,10 @@ binarytree::size_type binarytree::size_aux(const treenode* root) {
 			+ 1;
 	}
 }
+
+
+
+
 
 
 binarytree::size_type binarytree::numPrimesAux(const treenode* root) {
@@ -159,9 +220,17 @@ binarytree::size_type binarytree::numPrimesAux(const treenode* root) {
 }
 
 
+
+
+
+
 binarytree::size_type binarytree::numPrimes() {
 	return numPrimesAux(root);
 }
+
+
+
+
 
 
 LL<int> binarytree::toLL() {
@@ -169,6 +238,10 @@ LL<int> binarytree::toLL() {
 	toLLAux( root, copy);
 	return copy;
 }
+
+
+
+
 
 
 void binarytree::toLLAux(const treenode* root, LL<int> & copyMe) {
@@ -184,6 +257,11 @@ void binarytree::toLLAux(const treenode* root, LL<int> & copyMe) {
 	}
 }
 
+
+
+
+
+
 // todo - trace
 void binarytree::copy( const treenode* srcRoot, treenode*& dstRoot) {
 	if (srcRoot == nullptr) {
@@ -198,6 +276,10 @@ void binarytree::copy( const treenode* srcRoot, treenode*& dstRoot) {
 }
 
 
+
+
+
+
 void binarytree::clear(treenode*& dstRoot) {
 	if (dstRoot == nullptr) {
 		return;
@@ -209,6 +291,10 @@ void binarytree::clear(treenode*& dstRoot) {
 		dstRoot = nullptr;
 	}
 }
+
+
+
+
 
 
 void binarytree::insert_aux(treenode*& root, int item) {
@@ -227,6 +313,10 @@ void binarytree::insert_aux(treenode*& root, int item) {
 }
 
 
+
+
+
+
 void binarytree::print_aux(const treenode* root) {
 	if (root != nullptr) {
 		print_aux(root->left);
@@ -234,6 +324,10 @@ void binarytree::print_aux(const treenode* root) {
 		print_aux(root->right);
 	}
 }
+
+
+
+
 
 
 bool binarytree::isPrime(int canidate) {
