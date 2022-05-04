@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\DictionaryInterface.h">
+    <ClInclude Include="HashedEntry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Entry.h">
+    <ClInclude Include="DictionaryInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\HashedEntry.h">
+    <ClInclude Include="Entry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\client.cpp">
+    <ClCompile Include="client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HashedDictionary.cpp">
+    <ClCompile Include="HashedDictionary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

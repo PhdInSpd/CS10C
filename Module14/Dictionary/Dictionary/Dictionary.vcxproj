@@ -19,16 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\DictionaryInterface.h" />
-    <ClInclude Include="..\Entry.h" />
-    <ClInclude Include="..\HashedEntry.h" />
+    <ClInclude Include="DictionaryInterface.h" />
+    <ClInclude Include="Entry.h" />
+    <ClInclude Include="HashedEntry.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\client.cpp" />
-    <ClCompile Include="..\HashedDictionary.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="client.cpp" />
+    <ClCompile Include="HashedDictionary.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
