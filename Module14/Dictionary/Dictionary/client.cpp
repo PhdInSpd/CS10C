@@ -43,18 +43,25 @@ ostream& operator<<(ostream& out, const FamousPerson& printMe);
 
 
 int main() {
-    HashedDictionary<string, FamousPerson> h;
-    FamousPerson tempPerson;
-    ifstream infile("famous.txt");
-    assert(infile);
-    
-    readOnePerson(infile, tempPerson);
-    while (infile) {
-        h.add(tempPerson.lastname, tempPerson);
+    {
+        HashedDictionary<string, FamousPerson> h(1000);
+        cout << "should be empty:" << h.isEmpty() << " size:"<< h.getNumberOfItems() << endl;
+
+        FamousPerson tempPerson;
+        ifstream infile("famous.txt");
+        assert(infile);
+
         readOnePerson(infile, tempPerson);
+        while (infile) {
+            h.add(tempPerson.lastname, tempPerson);
+            readOnePerson(infile, tempPerson);
+        }
+        cout << "should NOT be empty:" << h.isEmpty() << " size:" << h.getNumberOfItems() << endl;
+
+        h.display();
+        h.clear();
+        cout << "should be empty:" << h.isEmpty() << " size:" << h.getNumberOfItems() << endl;
     }
-    
-    h.display();
 }
 
 
@@ -1239,6 +1246,4 @@ void readOnePerson(istream& infile, FamousPerson& readMe) {
 4887 m d rvhsrq 31 9th 94440
 8112 h ed iepjod 5 7th 94613
 9990 s fvh cpctinsgkc 68 8th 94575
-
-
 */

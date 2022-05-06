@@ -176,6 +176,9 @@ void HashedDictionary<KeyType, ItemType>::clear() {
                     prevPtr = curPtr;
                     curPtr = curPtr->getNext();
                 }
+                else {
+                    prevPtr = nullptr;
+                }
                 itemCount--;
             }
             hashTable[i] = nullptr;
@@ -272,11 +275,11 @@ int HashedDictionary<KeyType, ItemType>::getHashIndex(const KeyType& searchKey) 
     long result = searchKey[0];
     for (size_t i = 1; i < length; i++) {
         result = (result << shift) + searchKey[i];
+        result = result % hashTableSize;
     }
     result = result % hashTableSize;
     return (int)result;
 }
-
 
 
 
