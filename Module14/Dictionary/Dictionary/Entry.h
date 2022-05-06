@@ -1,30 +1,68 @@
-//  Created by Frank M. Carrano and Tim Henry.
-//  Copyright (c) 2013 __Pearson Education__. All rights reserved.
+/**
+student     : Jose Alfredo Martinez
+instructor  : Dave Harden
+class       : CS 10C
+date        : April 05, 2022
+file name   : Entry.h 
+Description : A class of entry objects for an array-based implementation of the ADT dictionary. Listing 18-2.
+*/
 
-/** A class of entry objects for an array-based implementation of the ADT dictionary.
-    Listing 18-2.
- @file Entry.h */
-
-#ifndef _ENTRY
-#define _ENTRY
-
-template <class KeyType, class ItemType>
-class Entry
-{
+#pragma once
+template <typename KeyType, typename ItemType>
+class Entry {
 private:
    ItemType item;
    KeyType searchKey;
    
 protected:
-   void setKey(const KeyType& searchKey);
+	void setKey(const KeyType& newSearchKey) {
+		searchKey = newSearchKey;
+   }
    
-public:
-   Entry();
-   Entry(ItemType newEntry, KeyType searchKey);
-   ItemType getItem() const;
-   KeyType getKey() const;
-   void setItem(const ItemType& newEntry);
-}; // end Entry
 
-#include "Entry.cpp"
-#endif
+
+
+
+
+public:
+   Entry() : item(ItemType()), searchKey(KeyType()) {}
+
+
+
+
+
+
+   Entry(ItemType newItem, KeyType newSearchKey) {
+	   item = newItem;
+	   searchKey = newSearchKey;
+   }
+
+
+
+
+
+
+   ItemType getItem() const {
+	   return item;
+   }
+   
+
+
+
+
+
+   void setItem(const ItemType& newEntry) {
+	   item = newEntry;
+   }
+
+
+
+
+
+
+
+
+   KeyType getKey() const {
+	   return searchKey;
+   }
+}; // end Entry

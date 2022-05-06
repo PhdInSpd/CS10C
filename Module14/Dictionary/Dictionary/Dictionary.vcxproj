@@ -21,11 +21,16 @@
   <ItemGroup>
     <ClInclude Include="DictionaryInterface.h" />
     <ClInclude Include="Entry.h" />
+    <ClInclude Include="HashedDictionary.h" />
     <ClInclude Include="HashedEntry.h" />
+    <ClInclude Include="NotFoundException.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="client.cpp" />
-    <ClCompile Include="HashedDictionary.cpp" />
+    <ClCompile Include="HashedDictionary.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

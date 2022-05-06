@@ -24,6 +24,12 @@
     <ClInclude Include="Entry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HashedDictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NotFoundException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="client.cpp">
