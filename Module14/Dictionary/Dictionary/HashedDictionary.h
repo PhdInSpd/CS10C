@@ -19,36 +19,43 @@ private:
 	int itemCount;									// Count of dictionary entries
 	int hashTableSize;								// Table size must be prime
 	static const int DEFAULT_SIZE = 101;
-	// check
+	// passed test
 	void allocHashTable(int tableSize);
-	// check
+	// passed test
 	int getHashIndex(const KeyType& searchKey) const;
+	// passed test
+	void copy(HashedEntry<KeyType, ItemType>** inHashTable);
 public:
-	// check
+	// passed test
 	HashedDictionary();
-	// check
+	// passed test
 	HashedDictionary(int tableSize);
-	//HashedDictionary(const HashedDictionary<KeyType, ItemType>& dict);
+	// passed test
+	HashedDictionary(const HashedDictionary<KeyType, ItemType>& dict);
+	// passed test
 	virtual ~HashedDictionary();
-	// check
+	// passed test
 	bool isEmpty() const;
-	// check
+	// passed test
 	int getNumberOfItems() const;
-	//
+	// passed test
 	bool add(const KeyType& searchKey, const ItemType& newItem);
+	// passed test
 	bool remove(const KeyType& searchKey);
-	
+	// passed test
 	void clear();
+	// passed test
 	ItemType getItem(const KeyType& searchKey) const
 		throw (NotFoundException);
+	// passed test
 	bool contains(const KeyType& searchKey) const;
-	// check
+	// passed test
 	void display() const;
 public:
-	// check
+	// passed test
 	static bool isPrime(int canidate);
 	// if current number is prime then return that else return nex available prime
-	// check
+	// passed test
 	static int getValidPrime(int canidate);
 }; // end HashedDictionary
 #include "HashedDictionary.cpp"

@@ -53,6 +53,19 @@ HashedDictionary<KeyType, ItemType>::HashedDictionary(int tableSize) {
 
 
 template <typename KeyType, typename ItemType>
+HashedDictionary<KeyType, ItemType>::HashedDictionary(const HashedDictionary<KeyType, ItemType>& dict) {
+    itemCount = 0;
+    hashTableSize = getValidPrime(dict.hashTableSize);
+    allocHashTable(hashTableSize);
+    copy(dict.hashTable);
+}
+
+
+
+
+
+
+template <typename KeyType, typename ItemType>
 bool HashedDictionary<KeyType, ItemType>::add(const KeyType& searchKey, const ItemType& newItem) {
    // Create entry to add to dictionary
    HashedEntry<KeyType, ItemType>* entryToAddPtr =
@@ -182,6 +195,32 @@ void HashedDictionary<KeyType, ItemType>::clear() {
                 itemCount--;
             }
             hashTable[i] = nullptr;
+        }
+    }
+}
+
+
+
+
+
+
+template <typename KeyType, typename ItemType>
+void HashedDictionary<KeyType, ItemType>::copy(HashedEntry<KeyType, ItemType>** inHashTable) {
+    for (size_t i = 0; i < hashTableSize; i++) {
+        if (inHashTable[i] != nullptr) {
+            HashedEntry<KeyType, ItemType>* prevPtr = inHashTable[i];
+            HashedEntry<KeyType, ItemType>* curPtr = prevPtr->getNext();
+
+            while (prevPtr != nullptr) {
+                this->add(prevPtr->getKey(), prevPtr->getItem());
+                if (curPtr != nullptr) {
+                    prevPtr = curPtr;
+                    curPtr = curPtr->getNext();
+                }
+                else {
+                    prevPtr = nullptr;
+                }
+            }
         }
     }
 }
