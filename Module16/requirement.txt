@@ -1,0 +1,4 @@
+-	Read  chapter 20
+-	pick a number of the given exercises
+-	programming problem 3
+-	programming problem 4 

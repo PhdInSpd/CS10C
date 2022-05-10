@@ -1,0 +1,3 @@
+-	Read chapter 19
+-	Chapter 19 programming problem 3:
+		Implement the ADT dictionary by using a red-black tree.
