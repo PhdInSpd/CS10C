@@ -3,6 +3,27 @@
 //  Edited by Jose Martinez
 #include <cmath>
 #include <iostream>
+/// <summary>
+/// convert ascii letter a-z and A-Z to 1-26 number 1 else return 0
+/// </summary>
+/// <param name="input"></param>
+/// <returns></returns>
+char asciiToDigit(char input) {
+    if (input >= 'a' && input <= 'z') {
+        return input - 'a' + 1;
+    }
+    if (input >= 'A' && input <= 'Z') {
+        return input - 'A' + 1;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
 template <typename KeyType, typename ItemType>
 void HashedDictionary<KeyType, ItemType>::allocHashTable(int tableSize) {
     hashTable = new  HashedEntry<KeyType, ItemType>*[tableSize];
@@ -310,10 +331,11 @@ int HashedDictionary<KeyType, ItemType>::getHashIndex(const KeyType& searchKey) 
     if (length == 0) return 0;
 
     // because ascii if 8 bits max
-    long shift = 8;
-    long result = searchKey[0];
+    long shift = 5;
+
+    long result = asciiToDigit( searchKey[0] );
     for (size_t i = 1; i < length; i++) {
-        result = (result << shift) + searchKey[i];
+        result = (result << shift) + asciiToDigit( searchKey[i] );
         result = result % hashTableSize;
     }
     result = result % hashTableSize;
